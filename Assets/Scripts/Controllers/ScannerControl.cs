@@ -4,17 +4,23 @@ using System.Collections;
 public class ScannerControl : ShipControl {
   
   private const float shoot_threshold = 0.5f;
-  private const int target_age_limit = 20;
-  private const float angle_randomization = 0.5f;
+  private const float angle_randomization = 0.1f;
   
-  private int current_randomization;
+  protected float current_randomization;
   private int current_target_age_limit;
   private int current_target_counter;
+  private Vector2 target_offset;
   protected Transform current_target_transform;
   
   protected Vector2 current_target_location {
     get {
-      return current_target_transform.position;
+      return ((Vector2)current_target_transform.position) + target_offset;
+    }
+  }
+  
+  protected float weapon_speed {
+    get {
+      return ship_script.weapon_speed;
     }
   }
   
@@ -36,9 +42,17 @@ public class ScannerControl : ShipControl {
   }
   
   protected void choose_target() {
-    // Random.Range(-angle_randomization, angle_randomization);
+    current_randomization = Random.Range(-angle_randomization, angle_randomization);
     
     current_target_transform = closest_enemy_ship();
+    target_offset = predict_target_offset(current_target_transform);
+  }
+  
+  protected Vector2 predict_target_offset(Transform target) {
+    Vector2 displacement = ((Vector2)target.position) - position;
+    float time = displacement.magnitude / weapon_speed;
+    Vector2 relative_velocity = RigidbodyHelper.get_velocity(target) - RigidbodyHelper.get_velocity(this);
+    return relative_velocity * time;
   }
   
   protected ArrayList enemy_ships() {

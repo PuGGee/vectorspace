@@ -26,6 +26,12 @@ public class ShipScript : MovementScript {
     }
   }
   
+  public WeaponScript[] weapons {
+    get {
+      return GetComponentsInChildren<WeaponScript>();
+    }
+  }
+  
   public float shield_fraction {
     get {
       if (transform.Find("Shield")) {
@@ -36,8 +42,13 @@ public class ShipScript : MovementScript {
     }
   }
   
+  public float weapon_speed {
+    get {
+      return weapons[0].projectile_speed;
+    }
+  }
+  
   public void pull_trigger() {
-    WeaponScript[] weapons = GetComponentsInChildren<WeaponScript>();
     foreach (WeaponScript weapon in weapons) {
       weapon.pull_trigger();
     }

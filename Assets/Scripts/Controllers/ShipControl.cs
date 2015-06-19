@@ -72,8 +72,8 @@ public class ShipControl : MonoBehaviour {
     return angle_towards_rads(target.position);
   }
   
-  public void turn_towards(Vector2 target_position) {
-    var angle = angle_towards(target_position);
+  public void turn_towards(Vector2 target_position, float angle_offset = 0) {
+    var angle = angle_towards(target_position) + angle_offset;
     if (Mathf.Abs(angle) < turn_threshold) {
       move_script.no_turn();
     } else if (angle < 0) {
@@ -83,8 +83,8 @@ public class ShipControl : MonoBehaviour {
     }
   }
   
-  public void turn_towards(Transform target) {
-    turn_towards(target.position);
+  public void turn_towards(Transform target, float angle_offset = 0) {
+    turn_towards(target.position, angle_offset);
   }
   
   public void destroy() {

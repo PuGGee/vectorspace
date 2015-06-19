@@ -17,7 +17,7 @@ public class AIControl : ScannerControl {
   }
   
   protected void move_towards(Vector2 target_position) {
-    turn_towards(target_position);
+    turn_towards(target_position, current_randomization);
     ship_script.forward();
   }
 }

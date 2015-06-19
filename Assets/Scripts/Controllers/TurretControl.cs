@@ -41,9 +41,13 @@ public class TurretControl : ScannerControl {
   override protected void FixedUpdate() {
     base.FixedUpdate();
     if (current_target_transform) {
-      weapon_script.direction_rads = -angle_towards_rads(current_target_location) + Mathf.PI / 2;
+      set_direction();
       weapon_script.turret_pull_trigger();
     }
+  }
+  
+  private void set_direction() {
+    weapon_script.direction_rads = -angle_towards_rads(current_target_location) + Mathf.PI / 2 + current_randomization;
   }
   
   override protected Transform closest_enemy_ship() {

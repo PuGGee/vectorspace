@@ -11,6 +11,10 @@ public class RigidbodyHelper {
     }
   }
   
+  public static Vector2 get_velocity(Component component) {
+    return component.GetComponent<MovementScript>().velocity;
+  }
+  
   public static void set_velocity(Rigidbody2D body, float speed, float angle_rads) {
     body.velocity = TrigHelper.direction_from_angle(angle_rads) * speed;
   }
