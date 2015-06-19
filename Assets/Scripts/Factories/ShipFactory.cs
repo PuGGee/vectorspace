@@ -30,7 +30,7 @@ public class ShipFactory : Factory {
         Utility utility_script = transform.GetComponent<Utility>();
         if (weapon_script != null) {
           weapon_script.hardpoint = hardpoint.transform;
-          //if (hardpoint is TurretHardpoint) weapon_script.set_turret();
+          if (hardpoint is TurretHardpoint) weapon_script.set_turret();
         } else {
           damage_script.armour += utility_script.armour;
           shield_script.shield_strength += utility_script.shield;

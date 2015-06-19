@@ -38,12 +38,16 @@ public class TurretControl : ScannerControl {
     }
   }
   
-  protected void Update() {
-    var target = closest_enemy_in_arc();
-    if (target) {
-      weapon_script.direction_rads = -angle_towards_rads(target) + Mathf.PI / 2;
+  override protected void FixedUpdate() {
+    base.FixedUpdate();
+    if (current_target_transform) {
+      weapon_script.direction_rads = -angle_towards_rads(current_target_location) + Mathf.PI / 2;
       weapon_script.turret_pull_trigger();
     }
+  }
+  
+  override protected Transform closest_enemy_ship() {
+    return closest_enemy_in_arc();
   }
   
   protected bool angle_in_arc(float angle_rads) {

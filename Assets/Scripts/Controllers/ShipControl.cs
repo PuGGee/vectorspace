@@ -63,9 +63,13 @@ public class ShipControl : MonoBehaviour {
     return angle_towards(target.position);
   }
   
-  public virtual float angle_towards_rads(Transform target) {
-    Vector2 displacement = target.position - ((Vector3)position);
+  public virtual float angle_towards_rads(Vector2 target_position) {
+    Vector2 displacement = target_position - position;
     return Mathf.Atan2(displacement.x, displacement.y);
+  }
+  
+  public virtual float angle_towards_rads(Transform target) {
+    return angle_towards_rads(target.position);
   }
   
   public void turn_towards(Vector2 target_position) {
