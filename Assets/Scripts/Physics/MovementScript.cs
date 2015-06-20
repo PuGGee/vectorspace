@@ -44,6 +44,17 @@ public class MovementScript : MonoBehaviour {
     }
   }
   
+  public void align_vector(Vector2 new_vector) {
+    Vector2 adjusted_vector = new_vector.normalized * max_speed;
+    Vector2 difference = adjusted_vector - velocity;
+    float magnitude = difference.magnitude;
+    if (magnitude > acceleration) {
+      rigidbody2D.AddForce(difference.normalized * acceleration);
+    } else {
+      rigidbody2D.AddForce(difference);
+    }
+  }
+  
   protected void thrust(float magnitude) {
     float x_component = Mathf.Cos(rotation_rads) * acceleration * magnitude;
     float y_component = Mathf.Sin(rotation_rads) * acceleration * magnitude;

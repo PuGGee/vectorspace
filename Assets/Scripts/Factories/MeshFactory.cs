@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MeshFactory {
   
-  public static Transform make_mesh(Vector2[] vertices2D) {
+  public static Mesh make_mesh(Vector2[] vertices2D) {
     Triangulator tr = new Triangulator(vertices2D);
     int[] indices = tr.Triangulate();
 

@@ -55,7 +55,7 @@ public abstract class Projectile : MonoBehaviour {
     }
   }
   
-  protected bool not_friend(Transform target) {
+  public bool not_friend(Transform target) {
     if (target.GetComponent<ShieldScript>()) {
       return target.parent != friend;
     } else {

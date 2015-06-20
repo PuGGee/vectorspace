@@ -18,7 +18,7 @@ public class ScannerControl : ShipControl {
     }
   }
   
-  protected float weapon_speed {
+  protected virtual float weapon_speed {
     get {
       return ship_script.weapon_speed;
     }
