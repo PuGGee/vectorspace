@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MeshFactory {
   
-  public static Transform make_mesh(Vector2[] vertices2D, Color color) {
+  public static Transform make_mesh(Vector2[] vertices2D) {
     Triangulator tr = new Triangulator(vertices2D);
     int[] indices = tr.Triangulate();
 
@@ -18,14 +18,6 @@ public class MeshFactory {
     mesh.RecalculateNormals();
     mesh.RecalculateBounds();
     
-    Transform mesh_renderer = GameObject.Instantiate(GlobalPrefabs.find.explosion_mesh) as Transform;
-    
-    mesh_renderer.GetComponent<MeshFilter>().mesh = mesh;
-    
-    MeshScript mesh_script = mesh_renderer.GetComponent<MeshScript>();
-    mesh_script.set_color(color);
-    mesh_script.set_duration(1);
-    
-    return mesh_renderer;
+    return mesh;
   }
 }

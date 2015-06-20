@@ -35,4 +35,14 @@ public class SfxFactory : Factory {
       explosion_cloud_script.set_color(color.Value);
     }
   }
+  
+  public static void make_polygon(Vector2[] vertices, Color color) {
+    var transform = make_object(GlobalPrefabs.find.explosion_mesh, GlobalObjects.sfx_layer, Vector2.zero);
+    
+    transform.GetComponent<MeshFilter>().mesh = MeshFactory.make_mesh(vertices);
+    
+    MeshScript mesh_script = transform.GetComponent<MeshScript>();
+    mesh_script.set_color(color);
+    mesh_script.set_duration(1);
+  }
 }

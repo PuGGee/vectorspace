@@ -12,7 +12,7 @@ public class ExplosionFactory : Factory {
     for (int i = 0; i < rays_count; i++) {
       points[i] = trace_ray(i * interval + offset, position, scale, damage);
     }
-    MeshFactory.make_mesh(points, new Color(0.44f, 0, 0, 1));
+    SfxFactory.make_mesh(points, new Color(0.44f, 0, 0, 1));
     SfxFactory.make_explosion(position, 0.3f * scale, new Color(1, 0, 0, 1));
   }
   
