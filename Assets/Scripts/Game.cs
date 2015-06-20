@@ -6,7 +6,7 @@ public class Game {
   public static void new_game() {
     PlayerData.credits = 300;
     PlayerData.ship = GlobalPrefabs.find.ship2;
-    PlayerData.add_equipment(0, GlobalPrefabs.find.weapon3);
+    PlayerData.add_equipment(0, GlobalPrefabs.find.weapon2);
     PlayerData.add_equipment(1, GlobalPrefabs.find.weapon3);
     PlayerData.add_equipment(5, GlobalPrefabs.find.weapon3);
     PlayerData.add_equipment(6, GlobalPrefabs.find.weapon3);

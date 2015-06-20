@@ -29,6 +29,8 @@ public class GlobalPrefabs : MonoBehaviour {
   
   public Transform asteroid;
   
+  public Transform explosion_mesh;
+  
   private static GlobalPrefabs instance;
   
   public static GlobalPrefabs find {
