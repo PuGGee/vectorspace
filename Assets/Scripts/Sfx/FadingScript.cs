@@ -7,8 +7,8 @@ public abstract class FadingScript : SfxScript {
   protected Color fade_color;
   
   void Start() {
-    set_duration(60);
-    color = new Color(1, 0, 0, 1);
+    if (fade_color == null) set_duration(60);
+    if (color == null) color = new Color(1, 0, 0, 1);
   }
   
   void FixedUpdate() {

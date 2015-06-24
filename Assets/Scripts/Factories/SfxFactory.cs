@@ -43,6 +43,6 @@ public class SfxFactory : Factory {
     
     MeshScript mesh_script = transform.GetComponent<MeshScript>();
     mesh_script.set_color(color);
-    mesh_script.set_duration(1);
+    mesh_script.set_duration(100);
   }
 }
