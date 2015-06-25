@@ -8,6 +8,7 @@ public class WeaponScript : Equipment {
   public WeaponType weapon_type;
   public float projectile_speed;
   public Color color;
+  public Color spark_color;
   
   private int timer;
   

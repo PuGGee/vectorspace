@@ -8,6 +8,7 @@ public abstract class Projectile : MonoBehaviour {
   protected Transform friend;
   
   protected Color color;
+  protected Color spark_color;
   
   public Transform shooter {
     set {
@@ -42,16 +43,18 @@ public abstract class Projectile : MonoBehaviour {
     RigidbodyHelper.add_velocity(rigidbody2D, speed, angle_rads);
   }
   
-  public virtual void set_color(Color color) {
+  public virtual void set_color(Color color, Color spark_color) {
     this.color = color;
     this.color.a = 1f;
+    this.spark_color = spark_color;
+    this.spark_color.a = 1f;
   }
   
   protected void impact(Collider2D target, Vector2 position, Vector2 normal) {
     make_impact(target, position, normal, power / 3, power);
     
     for (int i = 0; i < 5; i++) {
-      SfxFactory.make_spark(normal, position);
+      SfxFactory.make_spark(normal, position, spark_color);
     }
   }
   

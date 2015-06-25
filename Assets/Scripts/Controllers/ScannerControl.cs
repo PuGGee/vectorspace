@@ -60,7 +60,7 @@ public class ScannerControl : ShipControl {
     var object_list = GameObject.FindGameObjectsWithTag(ShipControl.ship_tag);
     foreach (GameObject ship in object_list) {
       var enemy_script = ship.GetComponent<ShipScript>();
-      if (team.enemy_of(enemy_script.team)) {
+      if (enemy_script != null && team.enemy_of(enemy_script.team)) {
         result.Add(ship);
       }
     }

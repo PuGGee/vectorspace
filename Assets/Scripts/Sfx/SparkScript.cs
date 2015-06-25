@@ -31,7 +31,7 @@ public class SparkScript : FadingScript {
   }
   
   public void set_maxspeed_and_direction(float max_speed, float angle_rads) {
-    var speed = Random.value * max_speed;
+    var speed = Mathf.Pow(Random.value, 4) * max_speed;
     RigidbodyHelper.set_velocity(rigidbody2D, speed, angle_rads);
     
     length = rigidbody2D.velocity / 40;

@@ -36,8 +36,10 @@ public class LocationMarkersScript : MonoBehaviour {
   private void draw_ship_markers() {
     foreach (Transform ship in find_off_screen_ships()) {      
       ShipScript ship_script = ship.GetComponent<ShipScript>();
-      var texture = ship_script.team.enemy_of(GlobalObjects.player.team) ? red_marker_texture : green_marker_texture;
-      draw_marker(find_intersection_for_object(ship), texture);
+      if (ship_script != null) {
+        var texture = ship_script.team.enemy_of(GlobalObjects.player.team) ? red_marker_texture : green_marker_texture;
+        draw_marker(find_intersection_for_object(ship), texture);
+      }
     }
   }
   

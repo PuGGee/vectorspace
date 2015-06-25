@@ -9,7 +9,7 @@ public class Game {
     PlayerData.add_equipment(0, GlobalPrefabs.find.weapon3);
     PlayerData.add_equipment(1, GlobalPrefabs.find.weapon3);
     PlayerData.add_equipment(5, GlobalPrefabs.find.weapon3);
-    PlayerData.add_equipment(6, GlobalPrefabs.find.weapon2);
+    PlayerData.add_equipment(6, GlobalPrefabs.find.weapon1);
     PlayerData.add_equipment(2, GlobalPrefabs.find.shield_gen1);
     PlayerData.add_equipment(3, GlobalPrefabs.find.armour1);
     PlayerData.add_equipment(4, GlobalPrefabs.find.armour1);

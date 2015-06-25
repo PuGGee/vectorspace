@@ -10,7 +10,7 @@ public class ProjectileFactory : Factory {
   private static void join_scripts(WeaponScript shooter_script, Projectile projectile_script) {
     projectile_script.shooter = shooter_script.transform.parent;
     projectile_script.power = shooter_script.power;
-    projectile_script.set_color(shooter_script.color);
+    projectile_script.set_color(shooter_script.color, shooter_script.spark_color);
   }
   
   public static void make_tracer(WeaponScript shooter_script) {
