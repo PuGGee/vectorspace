@@ -47,7 +47,7 @@ public class TurretControl : ScannerControl {
   }
   
   private void set_direction() {
-    weapon_script.direction_rads = -angle_towards_rads(current_target_location) + Mathf.PI / 2 + current_randomization;
+    weapon_script.direction_rads = -TrigHelper.angle_towards(transform, current_target_location) + Mathf.PI / 2 + current_randomization;
   }
   
   override protected Transform closest_enemy_ship() {
@@ -66,7 +66,7 @@ public class TurretControl : ScannerControl {
     var enemies = enemy_ships();
     var enemies_copy = new ArrayList(enemies);
     foreach (GameObject ship in enemies_copy) {
-      var angle_rads = TrigHelper.normalize_angle_rads(angle_towards_rads(ship.transform) + TrigHelper.normalize_angle_rads(move_script.rotation_rads - Mathf.PI / 2));
+      var angle_rads = TrigHelper.normalize_angle_rads(TrigHelper.angle_towards(transform, ship.transform) + TrigHelper.normalize_angle_rads(move_script.rotation_rads - Mathf.PI / 2));
       if (!angle_in_arc(angle_rads)) {
         enemies.Remove(ship);
       }

@@ -54,26 +54,8 @@ public class ShipControl : MonoBehaviour {
     }
   }
   
-  public virtual float angle_towards(Vector2 target_position) {
-    Vector2 displacement = target_position - position;
-    return Vector3.Cross(displacement, move_script.direction).z;
-  }
-  
-  public virtual float angle_towards(Transform target) {
-    return angle_towards(target.position);
-  }
-  
-  public virtual float angle_towards_rads(Vector2 target_position) {
-    Vector2 displacement = target_position - position;
-    return Mathf.Atan2(displacement.x, displacement.y);
-  }
-  
-  public virtual float angle_towards_rads(Transform target) {
-    return angle_towards_rads(target.position);
-  }
-  
   public void turn_towards(Vector2 target_position, float angle_offset = 0) {
-    var angle = angle_towards(target_position) + angle_offset;
+    var angle = TrigHelper.angle_towards(transform, target_position) + angle_offset;
     if (Mathf.Abs(angle) < turn_threshold) {
       move_script.no_turn();
     } else if (angle < 0) {

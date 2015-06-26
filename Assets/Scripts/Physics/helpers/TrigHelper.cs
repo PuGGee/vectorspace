@@ -15,4 +15,25 @@ public class TrigHelper {
     while (new_angle > Mathf.PI) new_angle -= Mathf.PI * 2;
     return new_angle;
   }
+  
+  public static float angle_towards(Transform centre, Vector2 target_position) {
+    Vector2 position = centre.position;
+    Vector2 displacement = target_position - position;
+    MovementScript move_script = centre.GetComponent<MovementScript>();
+    return Vector3.Cross(displacement, move_script.direction).z;
+  }
+  
+  public static float angle_towards(Transform centre, Transform target) {
+    return angle_towards(centre, target.position);
+  }
+  
+  public static float angle_towards_rads(Transform centre, Vector2 target_position) {
+    Vector2 position = centre.position;
+    Vector2 displacement = target_position - position;
+    return Mathf.Atan2(displacement.x, displacement.y);
+  }
+  
+  public static float angle_towards_rads(Transform centre, Transform target) {
+    return angle_towards_rads(centre, target.position);
+  }
 }
