@@ -53,8 +53,8 @@ public abstract class Projectile : MonoBehaviour {
   protected void impact(Collider2D target, Vector2 position, Vector2 normal) {
     make_impact(target, position, normal, power / 3, power);
     
-    for (int i = 0; i < 5; i++) {
-      SfxFactory.make_spark(normal, position, spark_color);
+    for (int i = 0; i < power; i++) {
+      SfxFactory.make_spark(normal, position, power * 4, spark_color);
     }
   }
   

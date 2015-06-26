@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SfxFactory : Factory {
   
-  public static void make_spark(Vector2 normal, Vector2 position, Color? color = null) {
+  public static void make_spark(Vector2 normal, Vector2 position, float max_speed, Color? color = null) {
     var normal_angle_rads = Mathf.Atan2(normal.y, normal.x);
     var spark_angle_rads = normal_angle_rads + Random.value * Mathf.PI - Mathf.PI / 2;
     
@@ -11,7 +11,7 @@ public class SfxFactory : Factory {
     
     var spark_script = transform.GetComponent<SparkScript>();
     spark_script.set_color(new Color(1, 0, 0, 1));
-    spark_script.set_maxspeed_and_direction(30, spark_angle_rads);
+    spark_script.set_maxspeed_and_direction(max_speed, spark_angle_rads);
     if (color.HasValue) {
       spark_script.set_color(color.Value);
     }
