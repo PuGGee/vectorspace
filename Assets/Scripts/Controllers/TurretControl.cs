@@ -71,6 +71,6 @@ public class TurretControl : ScannerControl {
         enemies.Remove(ship);
       }
     }
-    return find_closest_ship_from_collection(enemies);
+    return ShipHelper.find_closest_ship_from_collection(transform, enemies);
   }
 }

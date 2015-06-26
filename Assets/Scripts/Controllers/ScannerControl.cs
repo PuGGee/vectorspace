@@ -68,6 +68,6 @@ public class ScannerControl : ShipControl {
   }
   
   protected virtual Transform closest_enemy_ship() {
-    return find_closest_ship_from_collection(enemy_ships());
+    return ShipHelper.find_closest_ship_from_collection(transform, enemy_ships());
   }
 }
