@@ -5,6 +5,12 @@ public class GlobalPrefabs : MonoBehaviour {
 
   public Transform ship1;
   public Transform ship2;
+  public Transform ship3;
+  public Transform ship4;
+  public Transform ship5;
+  public Transform ship6;
+  public Transform ship7;
+  public Transform ship8;
   
   public Transform station1;
   

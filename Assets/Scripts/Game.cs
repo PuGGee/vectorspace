@@ -5,7 +5,7 @@ public class Game {
 
   public static void new_game() {
     PlayerData.credits = 300;
-    PlayerData.ship = GlobalPrefabs.find.ship2;
+    PlayerData.ship = GlobalPrefabs.find.ship3;
     PlayerData.add_equipment(0, GlobalPrefabs.find.weapon3);
     PlayerData.add_equipment(1, GlobalPrefabs.find.weapon3);
     // PlayerData.add_equipment(5, GlobalPrefabs.find.weapon3);
@@ -14,7 +14,7 @@ public class Game {
     PlayerData.add_equipment(3, GlobalPrefabs.find.armour1);
     PlayerData.add_equipment(4, GlobalPrefabs.find.armour1);
     
-    ShipFactory.make_player(new Vector2(0, 0));
+    GlobalObjects.game_control.start_game();
   }
   
   public static void pause() {

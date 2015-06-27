@@ -20,7 +20,6 @@ public class GameControl : MonoBehaviour {
   
   void Start() {
     map = Map.draw();
-    set_scale(2);
   }
   
   void Update() {
@@ -45,6 +44,11 @@ public class GameControl : MonoBehaviour {
     GlobalObjects.ship_spawner.spawn_station(map.station_at(player_position));
   }
   
+  public void start_game() {
+    ShipFactory.make_player(new Vector2(0, 0));
+    set_scale_for_player();
+  }
+  
   public void set_scale(int scale) {
     GlobalObjects.camera_control.set_scale(scale);
     GlobalObjects.asteroid_spawner.scale = scale;
@@ -60,8 +64,13 @@ public class GameControl : MonoBehaviour {
   public void undock() {
     GlobalObjects.player.destroy();
     ShipFactory.make_player(new Vector2(0, 0));
+    set_scale_for_player();
     disable_station_menu();
     Game.unpause();
+  }
+  
+  private void set_scale_for_player() {
+    set_scale(GlobalObjects.player.ship_scale);
   }
   
   public void enable_station_menu() {

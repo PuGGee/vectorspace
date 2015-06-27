@@ -18,6 +18,12 @@ public class ShipControl : MonoBehaviour {
     }
   }
   
+  public int ship_scale {
+    get {
+      return ship_script.scale;
+    }
+  }
+  
   public Team.Faction team {
     get {
       return ship_script.team;

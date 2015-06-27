@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ShipScript : MovementScript {
   
+  public int scale;
+  
   private Team.Faction team_data;
   
   public Team.Faction team {
