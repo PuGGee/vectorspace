@@ -25,7 +25,7 @@ public class ScannerControl : ShipControl {
   }
   
   protected bool in_range(Vector2 target_position) {
-    return Mathf.Abs(TrigHelper.angle_towards(transform, target_position)) <= shoot_threshold;
+    return Mathf.Abs(angle_towards(target_position)) <= shoot_threshold;
   }
   
   protected bool in_range(Transform target) {
@@ -68,6 +68,6 @@ public class ScannerControl : ShipControl {
   }
   
   protected virtual Transform closest_enemy_ship() {
-    return ShipHelper.find_closest_ship_from_collection(transform, enemy_ships());
+    return find_closest_ship_from_collection(enemy_ships());
   }
 }

@@ -16,24 +16,21 @@ public class TrigHelper {
     return new_angle;
   }
   
-  public static float angle_towards(Transform centre, Vector2 target_position) {
-    Vector2 position = centre.position;
-    Vector2 displacement = target_position - position;
-    MovementScript move_script = centre.GetComponent<MovementScript>();
-    return Vector3.Cross(displacement, move_script.direction).z;
+  public static float angle_towards(Vector2 centre, Vector2 direction, Vector2 target_position) {
+    Vector2 displacement = target_position - centre;
+    return Vector3.Cross(displacement, direction).z;
   }
   
-  public static float angle_towards(Transform centre, Transform target) {
-    return angle_towards(centre, target.position);
+  public static float angle_towards(Vector2 centre, Vector2 direction, Transform target) {
+    return angle_towards(centre, direction, target.position);
   }
   
-  public static float angle_towards_rads(Transform centre, Vector2 target_position) {
-    Vector2 position = centre.position;
-    Vector2 displacement = target_position - position;
+  public static float angle_towards_rads(Vector2 centre, Vector2 target_position) {
+    Vector2 displacement = target_position - centre;
     return Mathf.Atan2(displacement.x, displacement.y);
   }
   
-  public static float angle_towards_rads(Transform centre, Transform target) {
+  public static float angle_towards_rads(Vector2 centre, Transform target) {
     return angle_towards_rads(centre, target.position);
   }
 }
