@@ -20,6 +20,7 @@ public class GameControl : MonoBehaviour {
   
   void Start() {
     map = Map.draw();
+    set_scale(2);
   }
   
   void Update() {
@@ -42,6 +43,11 @@ public class GameControl : MonoBehaviour {
   
   private void check_station_proximity() {
     GlobalObjects.ship_spawner.spawn_station(map.station_at(player_position));
+  }
+  
+  public void set_scale(int scale) {
+    GlobalObjects.camera_control.set_scale(scale);
+    GlobalObjects.asteroid_spawner.scale = scale;
   }
   
   public void dock(StationScript station) {

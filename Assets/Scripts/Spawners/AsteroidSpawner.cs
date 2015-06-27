@@ -6,7 +6,7 @@ public class AsteroidSpawner : MonoBehaviour {
   public int field_radius;
   
   private int asteroid_max;
-  private float roid_start_distance;
+  private int roid_scale;
   
   public int density {
     get {
@@ -17,8 +17,41 @@ public class AsteroidSpawner : MonoBehaviour {
     }
   }
   
+  private float scale_factor {
+    get {
+      return 0.5f + scale * 0.5f;
+    }
+  }
+  
+  private int scaled_field_radius {
+    get {
+      return (int)(field_radius * scale_factor);
+    }
+  }
+  
+  private float roid_start_distance {
+    get {
+      return scaled_field_radius * 0.8f;
+    }
+  }
+  
+  private float max_roid_size {
+    get {
+      return 2 * scale_factor;
+    }
+  }
+  
+  public int scale {
+    get {
+      return roid_scale;
+    }
+    set {
+      roid_scale = value;
+    }
+  }
+  
   void Start() {
-    roid_start_distance = field_radius * 0.8f;
+    scale = 1;
   }
   
   void Update () {
@@ -45,7 +78,7 @@ public class AsteroidSpawner : MonoBehaviour {
       float x_diff = roid_position.x - player_position.x;
       float y_diff = roid_position.y - player_position.y;
       
-      if (x_diff * x_diff + y_diff * y_diff >= field_radius * field_radius) {
+      if (x_diff * x_diff + y_diff * y_diff >= scaled_field_radius * scaled_field_radius) {
         Destroy(roid);
       }
     }
@@ -55,7 +88,7 @@ public class AsteroidSpawner : MonoBehaviour {
     int roid_count = GameObject.FindGameObjectsWithTag("asteroid").Length;
     
     for (int i = roid_count; i < asteroid_max; i++) {
-      AsteroidFactory.make(roid_start_distance, 2, player_position);
+      AsteroidFactory.make(roid_start_distance, max_roid_size, player_position);
     }
   }
 }

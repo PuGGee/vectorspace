@@ -11,6 +11,7 @@ public class GlobalObjects : MonoBehaviour {
   private static ShipSpawner ship_spawner_cache;
   private static GameControl game_control_cache;
   private static MissionControl mission_control_cache;
+  private static CameraControl camera_control_cache;
   
   private static PlayerControl player_cache;
   
@@ -68,6 +69,12 @@ public class GlobalObjects : MonoBehaviour {
     }
   }
   
+  public static CameraControl camera_control {
+    get {
+      return camera_control_cache;
+    }
+  }
+  
   public static GameHUD hud {
     get {
       return hud_cache;
@@ -93,6 +100,7 @@ public class GlobalObjects : MonoBehaviour {
     ship_spawner_cache = GameObject.Find("EntityHandler").GetComponent<ShipSpawner>();
     game_control_cache = GameObject.Find("GameController").GetComponent<GameControl>();
     mission_control_cache = GameObject.Find("GameController").GetComponent<MissionControl>();
+    camera_control_cache = GameObject.Find("MainCamera").GetComponent<CameraControl>();
     
     hud_cache = GameObject.Find("GUIHandler").GetComponent<GameHUD>();
     station_menu_cache = GameObject.Find("GUIHandler").GetComponent<StationMenu>();
