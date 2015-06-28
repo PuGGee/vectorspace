@@ -23,6 +23,12 @@ public class GlobalPrefabs : MonoBehaviour {
   public Transform shield_gen1;
   public Transform armour1;
   public Transform engine1;
+  public Transform shield_gen2;
+  public Transform armour2;
+  public Transform engine2;
+  public Transform shield_gen3;
+  public Transform armour3;
+  public Transform engine3;
   
   public Transform tracer;
   public Transform lazor;

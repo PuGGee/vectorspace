@@ -10,6 +10,8 @@ public class ShipSpawner : MonoBehaviour {
     bp.ship_prefab = GlobalPrefabs.find.ship1;
     var weapon = new Transform[] {GlobalPrefabs.find.weapon1, GlobalPrefabs.find.weapon3, GlobalPrefabs.find.weapon5}[Random.Range(0, 3)];
     bp.add_equipment(0, weapon);
+    var equipment = new Transform[] {GlobalPrefabs.find.shield_gen1, GlobalPrefabs.find.armour1}[Random.Range(0, 2)];
+    bp.add_equipment(2, equipment);
     
     return ShipFactory.make(bp, "AIControl", team, GlobalObjects.player.transform.position + new Vector3(Random.value * 20 - 10, Random.value * 20 - 10, 0));
   }
