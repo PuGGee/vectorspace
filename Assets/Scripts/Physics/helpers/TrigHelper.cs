@@ -39,9 +39,6 @@ public class TrigHelper {
   }
   
   public static float angle_towards_rads(Vector2 centre, Transform target) {
-    Debug.Log("centre.position " + centre);
-    Debug.Log("ship.transform " + target.position);
-    Debug.Log("angle_rads " + angle_towards_rads(centre, target.position));
     return angle_towards_rads(centre, target.position);
   }
 }

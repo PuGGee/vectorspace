@@ -19,6 +19,9 @@ public class GlobalPrefabs : MonoBehaviour {
   public Transform weapon3;
   public Transform weapon4;
   public Transform weapon5;
+  public Transform weapon6;
+  public Transform weapon7;
+  public Transform weapon8;
   
   public Transform shield_gen1;
   public Transform armour1;

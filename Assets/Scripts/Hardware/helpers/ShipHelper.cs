@@ -30,7 +30,6 @@ public class ShipHelper {
   
   public static Transform closest_ship_from_collection_in_arc(Transform centre, ArrayList collection, float rotation_rads, float arc_start_rads, float arc_end_rads) {
     var collection_copy = new ArrayList(collection);
-        Debug.Log("derp");
     foreach (GameObject ship in collection) {
       
       var angle_towards = TrigHelper.angle_towards_rads(centre.position, ship.transform);
@@ -42,5 +41,9 @@ public class ShipHelper {
       }
     }
     return closest_ship_from_collection(centre, collection_copy);
+  }
+  
+  public static GameObject[] all_ships() {
+    return GameObject.FindGameObjectsWithTag(ShipControl.ship_tag);
   }
 }

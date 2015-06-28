@@ -63,7 +63,7 @@ public class ScannerControl : ShipControl {
   
   protected ArrayList enemy_ships() {
     var result = new ArrayList();
-    var object_list = GameObject.FindGameObjectsWithTag(ShipControl.ship_tag);
+    var object_list = ShipHelper.all_ships();
     foreach (GameObject ship in object_list) {
       var enemy_script = ship.GetComponent<ShipScript>();
       if (enemy_script != null && team.enemy_of(enemy_script.team)) {
