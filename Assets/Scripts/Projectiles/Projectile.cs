@@ -29,11 +29,11 @@ public abstract class Projectile : MonoBehaviour {
     var damage_script = target.GetComponent<DamageScript>();
     var shield_script = target.GetComponent<ShieldScript>();
     if (shield_script != null) {
-      shield_script.damage(damage);
+      DamageHelper.damage(shield_script, damage, position, normal);
       target.transform.parent.rigidbody2D.AddForceAtPosition(-normal * force * 10, position);
     } else {
       if (damage_script != null) {
-        damage_script.damage(damage);
+        DamageHelper.damage(damage_script, damage, position, normal);
       }
       target.rigidbody2D.AddForceAtPosition(-normal * force * 10, position);
     }
@@ -53,9 +53,7 @@ public abstract class Projectile : MonoBehaviour {
   protected void impact(Collider2D target, Vector2 position, Vector2 normal) {
     make_impact(target, position, normal, power / 6, power);
     
-    for (int i = 0; i < power; i++) {
-      SfxFactory.make_spark(normal, position, power * 4, spark_color);
-    }
+    SparkHelper.spark_fountain(position, normal, (int)power, spark_color);
   }
   
   public bool not_friend(Transform target) {

@@ -12,6 +12,12 @@ public class DamageScript : Damageable {
   
   public const float ablation_multiplier = 0.02f;
   
+  public override Color damage_color {
+    get {
+      return new Color(1, 0.6f, 0.1f, 1);
+    }
+  }
+  
   public float structure_fraction {
     get {
       return current_structure / structure;

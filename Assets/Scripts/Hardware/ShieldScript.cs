@@ -16,6 +16,12 @@ public class ShieldScript : Damageable {
   
   private bool overloaded;
   
+  public override Color damage_color {
+    get {
+      return new Color(0.1f, 0.1f, 1, 1);
+    }
+  }
+  
   public SpriteRenderer sprite {
     get {
       return GetComponent<SpriteRenderer>();

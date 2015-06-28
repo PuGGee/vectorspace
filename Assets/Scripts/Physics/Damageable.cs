@@ -3,7 +3,9 @@ using System.Collections;
 
 public abstract class Damageable : MonoBehaviour {
   
-  private const float damage_multiplier = 1;
+  private const float damage_multiplier = 3;
+  
+  public abstract Color damage_color { get; }
   
   public abstract void damage(float magnitude);
   

@@ -7,7 +7,7 @@ public class Explosive : Projectile {
     Vector2 position = transform.position;
     position -= rigidbody2D.velocity * Time.deltaTime;
     transform.position = position;
-    ExplosionFactory.make(4, transform.position, power / 3, spark_color);
+    ExplosionFactory.make(power / 5, transform.position, power / 3, spark_color);
     Destroy(gameObject);
   }
 }
