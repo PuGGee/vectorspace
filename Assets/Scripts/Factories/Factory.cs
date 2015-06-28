@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Factory {
   
-  protected static Transform make_object(Transform prefab, Transform parent, Vector2 position, Vector2? velocity = null) {
+  protected static Transform make_object(Transform prefab, Transform parent, Vector3 position, Vector2? velocity = null) {
     Transform object_transform = GameObject.Instantiate(prefab) as Transform;
     object_transform.parent = parent;
     object_transform.localPosition = position;

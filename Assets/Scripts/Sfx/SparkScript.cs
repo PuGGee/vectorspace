@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SparkScript : FadingScript {
   
-  private const float damping_factor = 0.1f;
+  private const float damping_factor = 0.75f;
   
   private Vector2 damping;
   private Vector2 length;
@@ -34,9 +34,9 @@ public class SparkScript : FadingScript {
     var speed = Mathf.Pow(Random.value, 4) * max_speed;
     RigidbodyHelper.set_velocity(rigidbody2D, speed, angle_rads);
     
-    length = rigidbody2D.velocity / 40;
+    length = rigidbody2D.velocity * (0.35f + Random.value) / 25;
     
-    damping = rigidbody2D.velocity * damping_factor * (0.5f + Random.value);
+    damping = rigidbody2D.velocity.normalized * damping_factor;
     
     float duration = rigidbody2D.velocity.x / damping.x;
     set_duration(duration);

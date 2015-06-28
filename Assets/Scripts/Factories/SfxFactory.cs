@@ -29,8 +29,8 @@ public class SfxFactory : Factory {
     }
   }
   
-  public static void make_explosion(Vector2 position, float scale, Color? color = null) {
-    var transform = make_object(GlobalPrefabs.find.explosion_cloud, GlobalObjects.sfx_layer, position);
+  public static void make_explosion(Vector3 position, float scale, Color? color = null) {
+    var transform = make_object(GlobalPrefabs.find.explosion_cloud, GlobalObjects.sfx_layer, position - new Vector3(0, 0, Random.value));
     
     var explosion_cloud_script = transform.GetComponent<ExplosionCloudScript>();
     explosion_cloud_script.set_scale(scale);
@@ -40,7 +40,7 @@ public class SfxFactory : Factory {
   }
   
   public static void make_polygon(Vector2[] vertices, Color color) {
-    var transform = make_object(GlobalPrefabs.find.explosion_mesh, GlobalObjects.sfx_layer, Vector2.zero);
+    var transform = make_object(GlobalPrefabs.find.explosion_mesh, GlobalObjects.sfx_layer, new Vector3(0, 0, Random.value));
     
     transform.GetComponent<MeshFilter>().mesh = MeshFactory.make_mesh(vertices);
     

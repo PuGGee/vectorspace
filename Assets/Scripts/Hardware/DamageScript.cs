@@ -48,7 +48,7 @@ public class DamageScript : Damageable {
   
   public void explode() {
     Destroy(gameObject);
-    ExplosionFactory.make(7, transform.position, 30);
+    ExplosionFactory.make(7, transform.position, 30, new Color(1, 0, 0, 1));
   }
   
   public override void damage(float magnitude) {

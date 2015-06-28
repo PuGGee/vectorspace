@@ -3,7 +3,9 @@ using System.Collections;
 
 public class ExplosionFactory : Factory {
   
-  public static void make(float scale, Vector2 position, float damage) {
+  private static Color mesh_color_constant = new Color(0.44f, 0.44f, 0.44f, 1);
+  
+  public static void make(float scale, Vector2 position, float damage, Color color) {
     int rays_count = 36;
     var interval = Mathf.PI * 2 / rays_count;
     var offset = Random.value * interval;
@@ -12,8 +14,8 @@ public class ExplosionFactory : Factory {
     for (int i = 0; i < rays_count; i++) {
       points[i] = trace_ray(i * interval + offset, position, scale, damage);
     }
-    SfxFactory.make_polygon(points, new Color(0.44f, 0, 0, 1));
-    SfxFactory.make_explosion(position, 0.3f * scale, new Color(1, 0, 0, 1));
+    SfxFactory.make_polygon(points, color * mesh_color_constant);
+    SfxFactory.make_explosion(position, 0.3f * scale, color);
   }
   
   private static Vector2 trace_ray(float angle_rads, Vector2 position, float max_length, float power) {
