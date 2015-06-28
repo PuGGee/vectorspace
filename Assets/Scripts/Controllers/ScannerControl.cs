@@ -24,6 +24,12 @@ public class ScannerControl : ShipControl {
     }
   }
   
+  protected bool has_target {
+    get {
+      return !!current_target_transform;
+    }
+  }
+  
   protected bool in_range(Vector2 target_position) {
     return Mathf.Abs(angle_towards(target_position)) <= shoot_threshold;
   }
@@ -45,7 +51,7 @@ public class ScannerControl : ShipControl {
     current_randomization = Random.Range(-angle_randomization, angle_randomization);
     
     current_target_transform = closest_enemy_ship();
-    target_offset = predict_target_offset(current_target_transform);
+    if (has_target) target_offset = predict_target_offset(current_target_transform);
   }
   
   protected Vector2 predict_target_offset(Transform target) {

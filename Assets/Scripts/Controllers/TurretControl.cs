@@ -51,7 +51,7 @@ public class TurretControl : ScannerControl {
   }
   
   override protected Transform closest_enemy_ship() {
-    return closest_enemy_in_arc();
+    return ShipHelper.closest_ship_from_collection_in_arc(hardpoint.transform, enemy_ships(), move_script.rotation_rads, hardpoint.arc_start_rads, hardpoint.arc_end_rads);
   }
   
   protected bool angle_in_arc(float angle_rads) {
@@ -66,7 +66,7 @@ public class TurretControl : ScannerControl {
     var enemies = enemy_ships();
     var enemies_copy = new ArrayList(enemies);
     foreach (GameObject ship in enemies_copy) {
-      var angle_rads = TrigHelper.normalize_angle_rads(angle_towards_rads(ship.transform) + TrigHelper.normalize_angle_rads(move_script.rotation_rads - Mathf.PI / 2));
+      var angle_rads = TrigHelper.normalize_angle_rads(TrigHelper.angle_towards_rads(position, ship.transform) + TrigHelper.normalize_angle_rads(move_script.rotation_rads - Mathf.PI / 2));
       if (!angle_in_arc(angle_rads)) {
         enemies.Remove(ship);
       }

@@ -6,7 +6,7 @@ public class ShieldScript : Damageable {
   public const string class_tag = "shield";
   
   private const float fade_rate = 0.04f;
-  private const float overload_penalty = 1;
+  private const float overload_penalty = 0.5f;
 
   public int shield_strength;
   public float recharge_rate;

@@ -16,6 +16,14 @@ public class TrigHelper {
     return new_angle;
   }
   
+  public static bool angle_in_arc(float angle_rads, float arc_start_rads, float arc_end_rads) {
+    if (arc_end_rads > arc_start_rads) {
+      return angle_rads >= arc_start_rads && angle_rads <= arc_end_rads;
+    } else {
+      return angle_rads >= arc_start_rads || angle_rads <= arc_end_rads;
+    }
+  }
+  
   public static float angle_towards(Vector2 centre, Vector2 direction, Vector2 target_position) {
     Vector2 displacement = target_position - centre;
     return Vector3.Cross(displacement, direction).z;
@@ -31,6 +39,9 @@ public class TrigHelper {
   }
   
   public static float angle_towards_rads(Vector2 centre, Transform target) {
+    Debug.Log("centre.position " + centre);
+    Debug.Log("ship.transform " + target.position);
+    Debug.Log("angle_rads " + angle_towards_rads(centre, target.position));
     return angle_towards_rads(centre, target.position);
   }
 }
