@@ -17,10 +17,4 @@ public class MissileScript : Explosive {
     move_script.acceleration = acceleration;
     transform.localEulerAngles = new Vector3(0, 0, angle_rads * Mathf.Rad2Deg);
   }
-  
-  void OnTriggerEnter2D (Collider2D collider) {
-    if (not_friend(collider.transform) && !collider.isTrigger) {
-      explode();
-    }
-  }
 }

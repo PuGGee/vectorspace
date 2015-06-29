@@ -29,17 +29,18 @@ public class SfxFactory : Factory {
     }
   }
   
-  public static void make_explosion(Vector3 position, float scale, Color? color = null) {
+  public static void make_explosion(Vector3 position, float scale, Vector2 velocity, Color? color = null) {
     var transform = make_object(GlobalPrefabs.find.explosion_cloud, GlobalObjects.sfx_layer, position - new Vector3(0, 0, Random.value));
     
     var explosion_cloud_script = transform.GetComponent<ExplosionCloudScript>();
     explosion_cloud_script.set_scale(scale);
+    explosion_cloud_script.set_velocity(velocity);
     if (color.HasValue) {
       explosion_cloud_script.set_color(color.Value);
     }
   }
   
-  public static void make_polygon(Vector2[] vertices, Color color) {
+  public static void make_polygon(Vector2[] vertices, Vector2 velocity, Color color) {
     var transform = make_object(GlobalPrefabs.find.explosion_mesh, GlobalObjects.sfx_layer, new Vector3(0, 0, Random.value));
     
     transform.GetComponent<MeshFilter>().mesh = MeshFactory.make_mesh(vertices);
@@ -47,5 +48,6 @@ public class SfxFactory : Factory {
     MeshScript mesh_script = transform.GetComponent<MeshScript>();
     mesh_script.set_color(color);
     mesh_script.set_duration(100);
+    mesh_script.set_velocity(velocity);
   }
 }
