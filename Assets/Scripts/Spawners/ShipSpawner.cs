@@ -13,7 +13,7 @@ public class ShipSpawner : MonoBehaviour {
     var equipment = new Transform[] {GlobalPrefabs.find.shield_gen1, GlobalPrefabs.find.armour1}[Random.Range(0, 2)];
     bp.add_equipment(2, equipment);
     
-    return ShipFactory.make(bp, "AIControl", team, GlobalObjects.player.transform.position + new Vector3(Random.value * 20 - 10, Random.value * 20 - 10, 0));
+    return ShipFactory.make(bp, "AIControl", team, GlobalObjects.player.transform.position + new Vector3(Random.value * 20 - 10, Random.value * 20 - 10, 0), 0);
   }
   
   public ShipControl make_random_ship(Team.Faction team, Vector2 location) {
@@ -21,7 +21,7 @@ public class ShipSpawner : MonoBehaviour {
     bp.ship_prefab = GlobalPrefabs.find.ship1;
     bp.add_equipment(0, GlobalPrefabs.find.weapon3);
     
-    return ShipFactory.make(bp, "AIControl", team, location);
+    return ShipFactory.make(bp, "AIControl", team, location, 0);
   }
   
   public void spawn_station(Map.Station station) {

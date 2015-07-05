@@ -3,12 +3,13 @@ using System.Collections;
 
 public class ShipFactory : Factory {
 
-  public static ShipControl make(Blueprint blueprint, string controller_type, Team.Faction team, Vector2 position) {
+  public static ShipControl make(Blueprint blueprint, string controller_type, Team.Faction team, Vector2 position, float rotation) {
     Transform transform = blueprint.make();
     
     add_equipment_to_transform(transform, blueprint);
     
     transform.localPosition = position;
+    transform.eulerAngles = new Vector3(0, 0, rotation);
     transform.GetComponent<ShipScript>().team = team;
     return transform.gameObject.AddComponent(controller_type) as ShipControl;
   }
@@ -50,7 +51,7 @@ public class ShipFactory : Factory {
     }
   }
   
-  public static void make_player(Vector2 position) {
-    GlobalObjects.player = make(PlayerData.blueprint, "PlayerControl", Team.player, position) as PlayerControl;
+  public static void make_player(Vector2 position, float rotation) {
+    GlobalObjects.player = make(PlayerData.blueprint, "PlayerControl", Team.player, position, rotation) as PlayerControl;
   }
 }

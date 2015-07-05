@@ -45,7 +45,7 @@ public class GameControl : MonoBehaviour {
   }
   
   public void start_game() {
-    ShipFactory.make_player(new Vector2(0, 0));
+    ShipFactory.make_player(new Vector2(0, 0), 0);
     set_scale_for_player();
   }
   
@@ -63,7 +63,7 @@ public class GameControl : MonoBehaviour {
   
   public void undock() {
     GlobalObjects.player.destroy();
-    ShipFactory.make_player(new Vector2(0, 0));
+    ShipFactory.make_player(docked_at.undock_position, docked_at.undock_rotation);
     set_scale_for_player();
     disable_station_menu();
     Game.unpause();

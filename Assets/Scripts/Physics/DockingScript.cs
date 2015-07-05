@@ -10,7 +10,6 @@ public class DockingScript : MonoBehaviour {
   }
   
   void OnTriggerEnter2D(Collider2D collider) {
-    print(collider.transform);
     if (collider.transform == GlobalObjects.player.transform) {
       dock();
     }
