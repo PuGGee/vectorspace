@@ -5,12 +5,13 @@ public class DockingScript : MonoBehaviour {
   
   private StationScript station {
     get {
-      return GetComponent<StationScript>();
+      return transform.parent.GetComponent<StationScript>();
     }
   }
   
-  void OnCollisionEnter2D(Collision2D collision) {
-    if (collision.transform == GlobalObjects.player.transform) {
+  void OnTriggerEnter2D(Collider2D collider) {
+    print(collider.transform);
+    if (collider.transform == GlobalObjects.player.transform) {
       dock();
     }
   }
