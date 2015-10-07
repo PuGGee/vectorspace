@@ -3,6 +3,8 @@ using System.Collections;
 
 public abstract class Mission {
   
+  private const int start_distance = 60;
+  
   private Vector2 location_data;
   private int bounty;
   private bool initialized;
@@ -38,10 +40,14 @@ public abstract class Mission {
     bounty = level * 100;
   }
   
-  public void start_mission() {
-    if (initialized) { return; }
-    initialize();
-    initialized = true;
+  public void test_proximity() {
+    if (!initialized) {
+      float player_distance = (location_data - GlobalObjects.player.position).sqrMagnitude;
+      if (player_distance <= start_distance * start_distance) {
+        initialize();
+        initialized = true;
+      }
+    }
   }
   
   public abstract void initialize();

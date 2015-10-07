@@ -11,19 +11,27 @@ public class MissionControl : MonoBehaviour {
     }
   }
   
+  public bool mission_marker_enabled {
+    get {
+      // TODO
+      return true;
+    }
+  }
+  
   void Update() {
     if (mission != null) {
-      if (mission.test_win_conditions()) {
+      if (mission.started && mission.test_win_conditions()) {
         PlayerData.credits += mission.credits;
         mission = null;
+      } else {
+        mission.test_proximity();
       }
     }
   }
   
   public void start_new_mission() {
     if (mission == null) {
-      mission = new SearchAndDestroy(generate_mission_position(100, GlobalObjects.player.transform.position), 1);
-      mission.initialize();
+      mission = new SearchAndDestroy(generate_mission_position(200, GlobalObjects.player.position), 1);
     }
   }
   

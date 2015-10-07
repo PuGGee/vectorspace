@@ -17,7 +17,7 @@ public class SlotTab : Tab {
   }
   
   private void render_ship_slots() {
-    var mid_point = new Vector2(Screen.width / 2, Screen.height / 2);
+    var mid_point = UIHelper.centre;
     HardpointScript[] hardpoints = ShipHelper.hardpoints(PlayerData.ship);
     for (int i = 0; i < hardpoints.Length; i++) {
       var hardpoint = hardpoints[i];

@@ -29,7 +29,7 @@ public class StationMenu : MonoBehaviour {
   void OnGUI() {
     GUI.skin = skin;
     
-    GUILayout.BeginArea(new Rect(Screen.width * 0.1f, Screen.height * 0.1f, Screen.width * 0.8f, Screen.height * 0.8f));
+    GUILayout.BeginArea(new Rect(Screen.width * 0.2f, Screen.height * 0.2f, Screen.width * 0.8f, Screen.height * 0.8f));
       GUILayout.BeginHorizontal();
         if (GUILayout.Button("Missions")) {
           goto_missions();

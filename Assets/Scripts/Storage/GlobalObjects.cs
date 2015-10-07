@@ -12,6 +12,7 @@ public class GlobalObjects : MonoBehaviour {
   private static GameControl game_control_cache;
   private static MissionControl mission_control_cache;
   private static CameraControl camera_control_cache;
+  private static UIControl ui_control_cache;
   
   private static PlayerControl player_cache;
   
@@ -75,15 +76,9 @@ public class GlobalObjects : MonoBehaviour {
     }
   }
   
-  public static GameHUD hud {
+  public static UIControl ui {
     get {
-      return hud_cache;
-    }
-  }
-  
-  public static StationMenu station_menu {
-    get {
-      return station_menu_cache;
+      return ui_control_cache;
     }
   }
   
@@ -101,9 +96,9 @@ public class GlobalObjects : MonoBehaviour {
     game_control_cache = GameObject.Find("GameController").GetComponent<GameControl>();
     mission_control_cache = GameObject.Find("GameController").GetComponent<MissionControl>();
     camera_control_cache = GameObject.Find("MainCamera").GetComponent<CameraControl>();
+    camera_control_cache = GameObject.Find("MainCamera").GetComponent<CameraControl>();
     
-    hud_cache = GameObject.Find("GUIHandler").GetComponent<GameHUD>();
-    station_menu_cache = GameObject.Find("GUIHandler").GetComponent<StationMenu>();
+    ui_control_cache = GameObject.Find("GUIHandler").GetComponent<UIControl>();
     
     if (!player_cache) {
       Game.new_game();

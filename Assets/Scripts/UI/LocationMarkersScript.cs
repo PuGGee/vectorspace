@@ -31,6 +31,7 @@ public class LocationMarkersScript : MonoBehaviour {
   void OnGUI() {
     draw_ship_markers();
     draw_station_markers();
+    // draw_mission_markers();
   }
   
   private void draw_ship_markers() {
@@ -48,6 +49,12 @@ public class LocationMarkersScript : MonoBehaviour {
       draw_marker(find_intersection_for_object(station), yellow_marker_texture);
     }
   }
+  
+  // private void draw_mission_markers() {
+  //   if (GlobalObjects.mission_control.mission_marker_enabled) {
+  //     draw_marker(GlobalObjects.mission_control.current_mission.location, yellow_marker_texture);
+  //   }
+  // }
   
   private ArrayList find_off_screen_ships() {
     return find_off_screen_objects(ShipControl.ship_tag, off_camera_multiplier_for_ships);
@@ -90,10 +97,8 @@ public class LocationMarkersScript : MonoBehaviour {
   }
   
   private void draw_marker(Vector2 position, Texture texture) {
-    Vector2 direction = position - new Vector2(Screen.width / 2, Screen.height / 2);
+    Vector2 direction = position - UIHelper.centre;
     var rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90;
-    GUIUtility.RotateAroundPivot(rotation, position);
-    GUI.DrawTexture(new Rect(position.x - marker_scale, position.y - marker_scale, marker_scale * 2, marker_scale * 2), texture);
-    GUIUtility.RotateAroundPivot(-rotation, position);
+    UIHelper.draw_marker(texture, position, rotation, marker_scale);
   }
 }

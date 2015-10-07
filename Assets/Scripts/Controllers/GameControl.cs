@@ -4,7 +4,13 @@ using System.Collections;
 public class GameControl : MonoBehaviour {
   
   private StationScript docked_at;
-  private Map map;
+  private Map game_map;
+  
+  public Map map {
+    get {
+      return game_map;
+    }
+  }
   
   private MissionControl mission_control {
     get {
@@ -19,7 +25,7 @@ public class GameControl : MonoBehaviour {
   }
   
   void Start() {
-    map = Map.draw();
+    game_map = Map.draw();
   }
   
   void Update() {
@@ -30,7 +36,7 @@ public class GameControl : MonoBehaviour {
       GlobalObjects.ship_spawner.make_random_ship(Team.team1);
     }
     if (Input.GetKeyDown("m")) {
-      mission_control.start_new_mission();
+      GlobalObjects.ui.toggle_map();
     }
     set_asteroid_density();
     check_station_proximity();
@@ -56,8 +62,7 @@ public class GameControl : MonoBehaviour {
   
   public void dock(StationScript station) {
     docked_at = station;
-    GlobalObjects.station_menu.current_station = station;
-    enable_station_menu();
+    GlobalObjects.ui.open_station_menu(station);
     Game.pause();
   }
   
@@ -65,22 +70,12 @@ public class GameControl : MonoBehaviour {
     GlobalObjects.player.destroy();
     ShipFactory.make_player(docked_at.undock_position, docked_at.undock_rotation);
     set_scale_for_player();
-    disable_station_menu();
+    GlobalObjects.ui.close_station_menu();
     Game.unpause();
   }
   
   private void set_scale_for_player() {
     set_scale(GlobalObjects.player.ship_scale);
-  }
-  
-  public void enable_station_menu() {
-    GlobalObjects.hud.enabled = false;
-    GlobalObjects.station_menu.enabled = true;
-  }
-  
-  public void disable_station_menu() {
-    GlobalObjects.hud.enabled = true;
-    GlobalObjects.station_menu.enabled = false;
   }
   
   public void clear_world() {

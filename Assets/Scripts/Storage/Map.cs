@@ -3,8 +3,20 @@ using System.Collections;
 
 public class Map {
   
-  ArrayList asteroid_fields;
-  ArrayList stations;
+  ArrayList as_field_list;
+  ArrayList station_list;
+  
+  public ArrayList asteroid_fields {
+    get {
+      return as_field_list;
+    }
+  }
+  
+  public ArrayList stations {
+    get {
+      return station_list;
+    }
+  }
   
   public static Map draw() {
     var map = new Map();
@@ -21,8 +33,8 @@ public class Map {
   }
   
   public Map() {
-    asteroid_fields = new ArrayList();
-    stations = new ArrayList();
+    as_field_list = new ArrayList();
+    station_list = new ArrayList();
   }
   
   public void add_asteroid_field(Vector2 position, int radius, int density) {
@@ -55,6 +67,7 @@ public class Map {
     
     Vector2 centre_value;
     int square_radius_value;
+    int _real_radius;
     int max_density;
     
     public Vector2 centre {
@@ -69,6 +82,10 @@ public class Map {
       }
     }
     
+    public int real_radius {
+      get; set;
+    }
+    
     public int density {
       get {
         return max_density;
@@ -78,6 +95,7 @@ public class Map {
     public AsteroidField(Vector2 centre_value, int radius_value, int max_density) {
       this.centre_value = centre_value;
       square_radius_value = radius_value * radius_value;
+      real_radius = radius_value;
       this.max_density = max_density;
     }
     

@@ -39,6 +39,12 @@ public class ShipControl : MonoBehaviour {
     }
   }
   
+  public float rotation_degrees {
+    get {
+      return transform.eulerAngles.z;
+    }
+  }
+  
   protected Transform find_closest_ship_from_collection(ArrayList collection) {
     var min_distance = Mathf.Infinity;
     GameObject closest = null;
