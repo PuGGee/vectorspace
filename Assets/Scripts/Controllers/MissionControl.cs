@@ -5,6 +5,8 @@ public class MissionControl : MonoBehaviour {
   
   private Mission mission;
   
+  private bool _mission_marker_enabled;
+  
   public Mission current_mission {
     get {
       return mission;
@@ -13,13 +15,14 @@ public class MissionControl : MonoBehaviour {
   
   public bool mission_marker_enabled {
     get {
-      // TODO
-      return true;
+      return _mission_marker_enabled;
     }
   }
   
   void Update() {
     if (mission != null) {
+      print(mission.location);
+      _mission_marker_enabled = !mission.started;
       if (mission.started && mission.test_win_conditions()) {
         PlayerData.credits += mission.credits;
         mission = null;
@@ -30,6 +33,7 @@ public class MissionControl : MonoBehaviour {
   }
   
   public void start_new_mission() {
+    _mission_marker_enabled = true;
     if (mission == null) {
       mission = new SearchAndDestroy(generate_mission_position(200, GlobalObjects.player.position), 1);
     }

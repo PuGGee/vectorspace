@@ -6,6 +6,7 @@ public class MapUI : MonoBehaviour {
   public Texture asteroid_field_texture;
   public Texture player_marker_texture;
   public Texture station_marker_texture;
+  public Texture mission_marker_texture;
   
   public float scale_factor;
   public float marker_scale;
@@ -31,14 +32,17 @@ public class MapUI : MonoBehaviour {
     }
   }
   
-  void Start() {
-    print(UIHelper.centre);
+  private Vector2 mission_position {
+    get {
+      return GlobalObjects.mission_control.current_mission.location;
+    }
   }
   
   void OnGUI() {
     draw_background();
     draw_asteroid_fields();
     draw_station_markers();
+    draw_mission_marker();
     draw_player_marker();
   }
   
@@ -68,6 +72,12 @@ public class MapUI : MonoBehaviour {
   private void draw_station_markers() {
     foreach (Map.Station station in map.stations) {
       UIHelper.draw_marker(station_marker_texture, screen_location(station.position.x, station.position.y), 0, marker_scale);
+    }
+  }
+  
+  private void draw_mission_marker() {
+    if (GlobalObjects.mission_control.mission_marker_enabled) {
+      UIHelper.draw_marker(mission_marker_texture, screen_location(mission_position.x, mission_position.y), 0, marker_scale);
     }
   }
   

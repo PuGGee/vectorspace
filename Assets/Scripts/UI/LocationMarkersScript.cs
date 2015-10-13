@@ -31,7 +31,7 @@ public class LocationMarkersScript : MonoBehaviour {
   void OnGUI() {
     draw_ship_markers();
     draw_station_markers();
-    // draw_mission_markers();
+    draw_mission_markers();
   }
   
   private void draw_ship_markers() {
@@ -50,11 +50,12 @@ public class LocationMarkersScript : MonoBehaviour {
     }
   }
   
-  // private void draw_mission_markers() {
-  //   if (GlobalObjects.mission_control.mission_marker_enabled) {
-  //     draw_marker(GlobalObjects.mission_control.current_mission.location, yellow_marker_texture);
-  //   }
-  // }
+  private void draw_mission_markers() {
+    if (GlobalObjects.mission_control.mission_marker_enabled) {
+      Vector2 mission_marker_location = find_intersection_for_point(GlobalObjects.mission_control.current_mission.location);
+      draw_marker(mission_marker_location, red_marker_texture);
+    }
+  }
   
   private ArrayList find_off_screen_ships() {
     return find_off_screen_objects(ShipControl.ship_tag, off_camera_multiplier_for_ships);
@@ -79,7 +80,8 @@ public class LocationMarkersScript : MonoBehaviour {
     return result;
   }
   
-  private Vector2 find_intersection_for_point(Vector2 relative_position) {
+  private Vector2 find_intersection_for_point(Vector2 position) {
+    Vector2 relative_position = Quaternion.Inverse(camera.rotation) * (position - camera_position);
     var width = ellipse.x;
     var height = ellipse.y;
     var ratio = Mathf.Abs(relative_position.y / relative_position.x);
@@ -92,8 +94,7 @@ public class LocationMarkersScript : MonoBehaviour {
   }
   
   private Vector2 find_intersection_for_object(Transform obj) {
-    Vector2 relative_position = Quaternion.Inverse(camera.rotation) * (obj.position - camera.position);
-    return find_intersection_for_point(relative_position);
+    return find_intersection_for_point(obj.position);
   }
   
   private void draw_marker(Vector2 position, Texture texture) {

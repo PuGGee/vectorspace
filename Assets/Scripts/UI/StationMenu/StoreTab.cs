@@ -9,21 +9,21 @@ public class StoreTab : Tab {
   
   public override void render() {
     store_scroll_position = GUILayout.BeginScrollView(store_scroll_position);
-    if (GUILayout.Button("Weapon 1")) {
-      buy(GlobalPrefabs.find.weapon1);
-    }
-    if (GUILayout.Button("Weapon 2")) {
-      buy(GlobalPrefabs.find.weapon2);
-    }
-    if (GUILayout.Button("Weapon 3")) {
-      buy(GlobalPrefabs.find.weapon3);
-    }
-    if (GUILayout.Button("Weapon 4")) {
-      buy(GlobalPrefabs.find.weapon4);
-    }
-    if (GUILayout.Button("Weapon 5")) {
-      buy(GlobalPrefabs.find.weapon5);
-    }
+    // if (GUILayout.Button("Weapon 1")) {
+    //   buy(GlobalPrefabs.find.weapon1);
+    // }
+    // if (GUILayout.Button("Weapon 2")) {
+    //   buy(GlobalPrefabs.find.weapon2);
+    // }
+    // if (GUILayout.Button("Weapon 3")) {
+    //   buy(GlobalPrefabs.find.weapon3);
+    // }
+    // if (GUILayout.Button("Weapon 4")) {
+    //   buy(GlobalPrefabs.find.weapon4);
+    // }
+    // if (GUILayout.Button("Weapon 5")) {
+    //   buy(GlobalPrefabs.find.weapon5);
+    // }
     if (GUILayout.Button("Shield")) {
       buy(GlobalPrefabs.find.shield_gen1);
     }

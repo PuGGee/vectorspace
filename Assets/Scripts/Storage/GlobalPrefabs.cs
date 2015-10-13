@@ -14,14 +14,21 @@ public class GlobalPrefabs : MonoBehaviour {
   
   public Transform station1;
   
-  public Transform weapon1;
-  public Transform weapon2;
-  public Transform weapon3;
-  public Transform weapon4;
-  public Transform weapon5;
-  public Transform weapon6;
-  public Transform weapon7;
-  public Transform weapon8;
+  public Transform lazor_mki;
+  public Transform lazor_mkii;
+  public Transform lazor_mkiii;
+  
+  public Transform light_machinegun;
+  public Transform machinegun;
+  public Transform heavy_machinegun;
+  
+  public Transform light_missile;
+  public Transform homing_missile;
+  public Transform heavy_missile;
+  
+  public Transform plasma_mki;
+  public Transform plasma_mkii;
+  public Transform plasma_mkiii;
   
   public Transform shield_gen1;
   public Transform armour1;
