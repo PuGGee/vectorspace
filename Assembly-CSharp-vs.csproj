@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{1E8C961B-1636-63FE-C420-2B12E8A2072E}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_4;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_OSX</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Scripts\Controllers\AIControl.cs" />
+     <Compile Include="Assets\Scripts\Controllers\CameraControl.cs" />
+     <Compile Include="Assets\Scripts\Controllers\GameControl.cs" />
+     <Compile Include="Assets\Scripts\Controllers\MissileControl.cs" />
+     <Compile Include="Assets\Scripts\Controllers\MissionControl.cs" />
+     <Compile Include="Assets\Scripts\Controllers\PlayerControl.cs" />
+     <Compile Include="Assets\Scripts\Controllers\ScannerControl.cs" />
+     <Compile Include="Assets\Scripts\Controllers\ShipControl.cs" />
+     <Compile Include="Assets\Scripts\Controllers\StationControl.cs" />
+     <Compile Include="Assets\Scripts\Controllers\TurretControl.cs" />
+     <Compile Include="Assets\Scripts\Controllers\UIControl.cs" />
+     <Compile Include="Assets\Scripts\Factories\AsteroidFactory.cs" />
+     <Compile Include="Assets\Scripts\Factories\ExplosionFactory.cs" />
+     <Compile Include="Assets\Scripts\Factories\Factory.cs" />
+     <Compile Include="Assets\Scripts\Factories\ImpactFactory.cs" />
+     <Compile Include="Assets\Scripts\Factories\MeshFactory.cs" />
+     <Compile Include="Assets\Scripts\Factories\ProjectileFactory.cs" />
+     <Compile Include="Assets\Scripts\Factories\SfxFactory.cs" />
+     <Compile Include="Assets\Scripts\Factories\ShipFactory.cs" />
+     <Compile Include="Assets\Scripts\Factories\StationFactory.cs" />
+     <Compile Include="Assets\Scripts\Game.cs" />
+     <Compile Include="Assets\Scripts\Hardware\DamageScript.cs" />
+     <Compile Include="Assets\Scripts\Hardware\Equipment.cs" />
+     <Compile Include="Assets\Scripts\Hardware\HardpointScript.cs" />
+     <Compile Include="Assets\Scripts\Hardware\ShieldScript.cs" />
+     <Compile Include="Assets\Scripts\Hardware\ShipScript.cs" />
+     <Compile Include="Assets\Scripts\Hardware\StationScript.cs" />
+     <Compile Include="Assets\Scripts\Hardware\Subsystems\WeaponSystem.cs" />
+     <Compile Include="Assets\Scripts\Hardware\TurretHardpoint.cs" />
+     <Compile Include="Assets\Scripts\Hardware\Utility.cs" />
+     <Compile Include="Assets\Scripts\Hardware\WeaponScript.cs" />
+     <Compile Include="Assets\Scripts\Hardware\helpers\EquipmentHelper.cs" />
+     <Compile Include="Assets\Scripts\Hardware\helpers\ShipHelper.cs" />
+     <Compile Include="Assets\Scripts\Missions\Mission.cs" />
+     <Compile Include="Assets\Scripts\Missions\SearchAndDestroy.cs" />
+     <Compile Include="Assets\Scripts\Physics\Damageable.cs" />
+     <Compile Include="Assets\Scripts\Physics\DockingScript.cs" />
+     <Compile Include="Assets\Scripts\Physics\Impact.cs" />
+     <Compile Include="Assets\Scripts\Physics\MovementScript.cs" />
+     <Compile Include="Assets\Scripts\Physics\helpers\RigidbodyHelper.cs" />
+     <Compile Include="Assets\Scripts\Physics\helpers\TrigHelper.cs" />
+     <Compile Include="Assets\Scripts\Projectiles\Explosive.cs" />
+     <Compile Include="Assets\Scripts\Projectiles\LazorScript.cs" />
+     <Compile Include="Assets\Scripts\Projectiles\MissileScript.cs" />
+     <Compile Include="Assets\Scripts\Projectiles\Projectile.cs" />
+     <Compile Include="Assets\Scripts\Projectiles\SlugScript.cs" />
+     <Compile Include="Assets\Scripts\Projectiles\TracerScript.cs" />
+     <Compile Include="Assets\Scripts\Sfx\ExplosionCloudScript.cs" />
+     <Compile Include="Assets\Scripts\Sfx\ExplosionLayerScript.cs" />
+     <Compile Include="Assets\Scripts\Sfx\FadingScript.cs" />
+     <Compile Include="Assets\Scripts\Sfx\LineScript.cs" />
+     <Compile Include="Assets\Scripts\Sfx\MeshScript.cs" />
+     <Compile Include="Assets\Scripts\Sfx\SfxScript.cs" />
+     <Compile Include="Assets\Scripts\Sfx\SparkScript.cs" />
+     <Compile Include="Assets\Scripts\Sfx\Triangulator.cs" />
+     <Compile Include="Assets\Scripts\Sfx\helpers\SparkHelper.cs" />
+     <Compile Include="Assets\Scripts\Spawners\AsteroidSpawner.cs" />
+     <Compile Include="Assets\Scripts\Spawners\ShipSpawner.cs" />
+     <Compile Include="Assets\Scripts\Storage\Blueprint.cs" />
+     <Compile Include="Assets\Scripts\Storage\GlobalObjects.cs" />
+     <Compile Include="Assets\Scripts\Storage\GlobalPrefabs.cs" />
+     <Compile Include="Assets\Scripts\Storage\Map.cs" />
+     <Compile Include="Assets\Scripts\Storage\PlayerData.cs" />
+     <Compile Include="Assets\Scripts\Storage\SensorTarget.cs" />
+     <Compile Include="Assets\Scripts\Storage\Team.cs" />
+     <Compile Include="Assets\Scripts\Storage\helpers\ListHelper.cs" />
+     <Compile Include="Assets\Scripts\UI\GameHUD.cs" />
+     <Compile Include="Assets\Scripts\UI\LocationMarkersScript.cs" />
+     <Compile Include="Assets\Scripts\UI\MapUI.cs" />
+     <Compile Include="Assets\Scripts\UI\StationMenu\MissionTab.cs" />
+     <Compile Include="Assets\Scripts\UI\StationMenu\ShipsTab.cs" />
+     <Compile Include="Assets\Scripts\UI\StationMenu\SlotTab.cs" />
+     <Compile Include="Assets\Scripts\UI\StationMenu\StationMenu.cs" />
+     <Compile Include="Assets\Scripts\UI\StationMenu\StoreTab.cs" />
+     <Compile Include="Assets\Scripts\UI\StationMenu\Tab.cs" />
+     <Compile Include="Assets\Scripts\UI\helpers\UIHelper.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>

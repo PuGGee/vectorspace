@@ -11,19 +11,19 @@ public class ShipControl : MonoBehaviour {
       return gameObject.GetComponent<MovementScript>();
     }
   }
-  
+
   public virtual ShipScript ship_script {
     get {
       return gameObject.GetComponent<ShipScript>();
     }
   }
-  
+
   public int ship_scale {
     get {
-      return ship_script.scale;
+      return (int)ship_script.scale;
     }
   }
-  
+
   public Team.Faction team {
     get {
       return ship_script.team;
@@ -32,19 +32,19 @@ public class ShipControl : MonoBehaviour {
       ship_script.team = value;
     }
   }
-  
+
   public virtual Vector2 position {
     get {
       return transform.position;
     }
   }
-  
+
   public float rotation_degrees {
     get {
       return transform.eulerAngles.z;
     }
   }
-  
+
   protected Transform find_closest_ship_from_collection(ArrayList collection) {
     var min_distance = Mathf.Infinity;
     GameObject closest = null;
@@ -65,23 +65,23 @@ public class ShipControl : MonoBehaviour {
       return closest.transform;
     }
   }
-  
+
   public virtual float angle_towards(Vector2 target_position) {
     return TrigHelper.angle_towards(position, move_script.direction, target_position);
   }
-  
+
   public virtual float angle_towards(Transform target) {
     return angle_towards(target.position);
   }
-  
+
   public virtual float angle_towards_rads(Vector2 target_position) {
     return TrigHelper.angle_towards_rads(position, target_position);
   }
-  
+
   public virtual float angle_towards_rads(Transform target) {
     return angle_towards_rads(target.position);
   }
-  
+
   public void turn_towards(Vector2 target_position, float angle_offset = 0) {
     var angle = angle_towards(target_position) + angle_offset;
     if (Mathf.Abs(angle) < turn_threshold) {
@@ -92,11 +92,11 @@ public class ShipControl : MonoBehaviour {
       move_script.turn_right();
     }
   }
-  
+
   public void turn_towards(Transform target, float angle_offset = 0) {
     turn_towards(target.position, angle_offset);
   }
-  
+
   public void destroy() {
     Destroy(gameObject);
   }

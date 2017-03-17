@@ -5,20 +5,22 @@ public class ShipFactory : Factory {
 
   public static ShipControl make(Blueprint blueprint, string controller_type, Team.Faction team, Vector2 position, float rotation) {
     Transform transform = blueprint.make();
-    
+
     add_equipment_to_transform(transform, blueprint);
-    
+
     transform.localPosition = position;
     transform.eulerAngles = new Vector3(0, 0, rotation);
-    transform.GetComponent<ShipScript>().team = team;
-    return transform.gameObject.AddComponent(controller_type) as ShipControl;
+    var ship_script = transform.GetComponent<ShipScript>();
+    ship_script.team = team;
+    ship_script.finalize();
+    return UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(transform.gameObject, "Assets/Scripts/Factories/ShipFactory.cs (16,12)", controller_type) as ShipControl;
   }
-  
+
   private static void add_equipment_to_transform(Transform instantiated_transform, Blueprint blueprint) {
     DamageScript damage_script = instantiated_transform.GetComponent<DamageScript>();
     ShieldScript shield_script = instantiated_transform.Find("Shield").GetComponent<ShieldScript>();
     MovementScript movement_script = instantiated_transform.GetComponent<MovementScript>();
-    
+
     HardpointScript[] hardpoints = ShipHelper.hardpoints(instantiated_transform);
     for (int i = 0; i < blueprint.equipment.Length; i++) {
       if (blueprint.equipment[i] != null) {
@@ -26,7 +28,7 @@ public class ShipFactory : Factory {
         HardpointScript hardpoint = hardpoints[i];
         Transform transform = GameObject.Instantiate(item) as Transform;
         transform.parent = instantiated_transform;
-        
+
         WeaponScript weapon_script = transform.GetComponent<WeaponScript>();
         Utility utility_script = transform.GetComponent<Utility>();
         if (weapon_script != null) {
@@ -50,7 +52,7 @@ public class ShipFactory : Factory {
       shield_script.reset();
     }
   }
-  
+
   public static void make_player(Vector2 position, float rotation) {
     GlobalObjects.player = make(PlayerData.blueprint, "PlayerControl", Team.player, position, rotation) as PlayerControl;
   }

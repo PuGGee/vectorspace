@@ -65,14 +65,14 @@ public class ShieldScript : Damageable {
   
   public void disable() {
     sprite.enabled = false;
-    collider2D.enabled = false;
+    GetComponent<Collider2D>().enabled = false;
     overloaded = true;
     current_strength = -shield_strength * overload_penalty;
   }
   
   public void enable() {
     sprite.enabled = true;
-    collider2D.enabled = true;
+    GetComponent<Collider2D>().enabled = true;
     overloaded = false;
   }
   

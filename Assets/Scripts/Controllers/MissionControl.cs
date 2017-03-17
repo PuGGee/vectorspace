@@ -32,10 +32,10 @@ public class MissionControl : MonoBehaviour {
     }
   }
   
-  public void start_new_mission() {
+  public void start_new_mission(int level) {
     _mission_marker_enabled = true;
     if (mission == null) {
-      mission = new SearchAndDestroy(generate_mission_position(200, GlobalObjects.player.position), 1);
+      mission = new SearchAndDestroy(generate_mission_position(200, GlobalObjects.player.position), level);
     }
   }
   

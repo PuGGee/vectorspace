@@ -22,7 +22,7 @@ public class SparkScript : FadingScript {
   
   void Update() {
     line.set_from_to(position, position + length);
-    rigidbody2D.velocity -= damping;
+    GetComponent<Rigidbody2D>().velocity -= damping;
   }
   
   public override void set_color(Color color) {
@@ -32,13 +32,13 @@ public class SparkScript : FadingScript {
   
   public void set_maxspeed_and_direction(float max_speed, float angle_rads) {
     var speed = Mathf.Pow(Random.value, 4) * max_speed;
-    RigidbodyHelper.set_velocity(rigidbody2D, speed, angle_rads);
+    RigidbodyHelper.set_velocity(GetComponent<Rigidbody2D>(), speed, angle_rads);
     
-    length = rigidbody2D.velocity * (0.35f + Random.value) / 25;
+    length = GetComponent<Rigidbody2D>().velocity * (0.35f + Random.value) / 25;
     
-    damping = rigidbody2D.velocity.normalized * damping_factor;
+    damping = GetComponent<Rigidbody2D>().velocity.normalized * damping_factor;
     
-    float duration = rigidbody2D.velocity.x / damping.x;
+    float duration = GetComponent<Rigidbody2D>().velocity.x / damping.x;
     set_duration(duration);
   }
 }

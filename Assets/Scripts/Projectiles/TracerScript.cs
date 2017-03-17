@@ -14,7 +14,7 @@ public class TracerScript : Projectile {
   
   private Vector2 line_vector {
     get {
-      return rigidbody2D.velocity * Time.deltaTime;
+      return GetComponent<Rigidbody2D>().velocity * Time.deltaTime;
     }
   }
   
@@ -44,7 +44,7 @@ public class TracerScript : Projectile {
   }
   
   private bool test_ray_collision() {
-    RaycastHit2D[] hits = Physics2D.RaycastAll(position + line_vector, rigidbody2D.velocity, rigidbody2D.velocity.magnitude * Time.deltaTime);
+    RaycastHit2D[] hits = Physics2D.RaycastAll(position + line_vector, GetComponent<Rigidbody2D>().velocity, GetComponent<Rigidbody2D>().velocity.magnitude * Time.deltaTime);
     if (hits.Length > 0) {
       foreach (RaycastHit2D hit in hits) {
         if (not_friend(hit.collider.transform)) {
@@ -58,6 +58,6 @@ public class TracerScript : Projectile {
   }
   
   private void update_position() {
-    line.SetPosition(1, rigidbody2D.velocity * Time.deltaTime);
+    line.SetPosition(1, GetComponent<Rigidbody2D>().velocity * Time.deltaTime);
   }
 }

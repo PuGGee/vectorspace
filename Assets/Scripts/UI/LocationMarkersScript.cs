@@ -72,8 +72,8 @@ public class LocationMarkersScript : MonoBehaviour {
       Vector2 obj_position = obj.transform.position;
       Vector2 position = obj_position - camera_position;
       Vector2 rotated_position = Quaternion.Inverse(camera.rotation) * position;
-      if (Mathf.Abs(rotated_position.x * Camera.main.camera.orthographicSize) >= ellipse.x * multiplier ||
-          Mathf.Abs(rotated_position.y * Camera.main.camera.orthographicSize) >= ellipse.y * multiplier) {
+      if (Mathf.Abs(rotated_position.x * Camera.main.GetComponent<Camera>().orthographicSize) >= ellipse.x * multiplier ||
+          Mathf.Abs(rotated_position.y * Camera.main.GetComponent<Camera>().orthographicSize) >= ellipse.y * multiplier) {
         result.Add(obj.transform);
       }
     }

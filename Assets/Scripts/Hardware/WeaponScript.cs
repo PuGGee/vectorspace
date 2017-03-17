@@ -2,31 +2,23 @@ using UnityEngine;
 using System.Collections;
 
 public class WeaponScript : Equipment {
-  
+
   public int fire_rate;
   public float power;
   public WeaponType weapon_type;
   public float projectile_speed;
   public Color color;
   public Color spark_color;
-  
-  private int timer;
-  
+  public float explosion_size;
+  public bool explosion_cloud;
+
+  private int _timer;
+
   private Transform hardpoint_transform;
   private ShipScript ship_script;
-  
-  private float direction_rads_value;
-  private bool is_turret;
-  
-  public float direction_rads {
-    get {
-      return direction_rads_value;
-    }
-    set {
-      direction_rads_value = value;
-    }
-  }
-  
+
+  public float direction_rads { get; set; }
+
   public Transform hardpoint {
     get {
       return hardpoint_transform;
@@ -35,13 +27,21 @@ public class WeaponScript : Equipment {
       hardpoint_transform = value;
     }
   }
-  
+
   public HardpointScript hardpoint_script {
     get {
       return hardpoint.GetComponent<HardpointScript>();
     }
   }
-  
+
+  public int timer {
+    get {
+      return _timer;
+    }
+  }
+
+  public bool is_turret { get; set; }
+
   public ShipScript ship {
     get {
       if (!ship_script) {
@@ -50,7 +50,7 @@ public class WeaponScript : Equipment {
       return ship_script;
     }
   }
-  
+
   public virtual float rotation_rads {
     get {
       if (is_turret) {
@@ -60,42 +60,40 @@ public class WeaponScript : Equipment {
       }
     }
   }
-  
+
   public Vector2 world_position {
     get {
       return hardpoint_transform.position;
     }
   }
-  
+
   public void set_turret() {
     is_turret = true;
-    gameObject.AddComponent("TurretControl");
+    gameObject.AddComponent<TurretControl>();
     gameObject.GetComponent<TurretControl>().weapon = this;
   }
-  
+
   void Start() {
-    timer = 0;
+    _timer = fire_rate;
   }
-  
+
   protected virtual void FixedUpdate() {
-    timer++;
+    _timer++;
   }
-  
+
   public void pull_trigger() {
-    if (!is_turret) trigger();
-  }
-  
-  public void turret_pull_trigger() {
-    if (is_turret) trigger();
-  }
-  
-  private void trigger() {
-    if (timer >= fire_rate) {
+    if (_timer >= fire_rate) {
       shoot();
-      timer = 0;
+      _timer = 0;
     }
   }
-  
+
+  public void release_trigger(int timing_offset) {
+    if (_timer >= fire_rate - timing_offset) {
+      _timer = fire_rate - timing_offset;
+    }
+  }
+
   private void shoot() {
     switch (weapon_type) {
       case WeaponType.tracer:
@@ -112,7 +110,7 @@ public class WeaponScript : Equipment {
         break;
     }
   }
-  
+
   public enum WeaponType {
     tracer,
     lazor,

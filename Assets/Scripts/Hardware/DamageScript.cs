@@ -54,11 +54,11 @@ public class DamageScript : Damageable {
   
   public void explode() {
     Destroy(gameObject);
-    ExplosionFactory.make(7, transform.position, rigidbody2D.velocity, 30, new Color(1, 0, 0, 1));
+    ExplosionFactory.make(7, transform.position, GetComponent<Rigidbody2D>().velocity, 30, new Color(1, 0, 0, 1));
   }
   
   public override void damage(float magnitude) {
-    if (transform.Find("Shield") != null && transform.Find("Shield").GetComponent<ShieldScript>().shield_active) { return; }
+    if (shield_active()) { return; }
     float armour_gap = current_armour_top - current_armour_bottom;
     float deflection = Random.value * armour_gap + current_armour_top;
     float ablation;
@@ -81,5 +81,9 @@ public class DamageScript : Damageable {
     } else {
       current_armour_top -= ablation;
     }
+  }
+  
+  private bool shield_active() {
+    return transform.Find("Shield") != null && transform.Find("Shield").GetComponent<ShieldScript>().shield_active;
   }
 }

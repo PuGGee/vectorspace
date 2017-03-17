@@ -10,6 +10,8 @@ public class ProjectileFactory : Factory {
   private static void join_scripts(WeaponScript shooter_script, Projectile projectile_script) {
     projectile_script.shooter = shooter_script.transform.parent;
     projectile_script.power = shooter_script.power;
+    projectile_script.explosion_size = shooter_script.explosion_size;
+    projectile_script.explosion_cloud = shooter_script.explosion_cloud;
     projectile_script.set_color(shooter_script.color, shooter_script.spark_color);
   }
   

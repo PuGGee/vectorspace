@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GlobalPrefabs : MonoBehaviour {
 
@@ -29,6 +30,10 @@ public class GlobalPrefabs : MonoBehaviour {
   public Transform plasma_mki;
   public Transform plasma_mkii;
   public Transform plasma_mkiii;
+  
+  public Transform heavy_plasma_mki;
+  public Transform heavy_plasma_mkii;
+  public Transform heavy_plasma_mkiii;
   
   public Transform shield_gen1;
   public Transform armour1;

@@ -26,11 +26,11 @@ public class AsteroidFactory : Factory {
     var x_scale = Random.value * (max_scale - min_scale) + min_scale;
     var y_scale = Random.value * (max_scale - min_scale) + min_scale;
     asteroid_transform.localScale = new Vector2(x_scale, y_scale);
-    asteroid_transform.rigidbody2D.mass *= x_scale * y_scale;
+    asteroid_transform.GetComponent<Rigidbody2D>().mass *= x_scale * y_scale;
     
-    asteroid_transform.rigidbody2D.angularVelocity = Random.value * max_roid_spin * 2 - max_roid_spin;
+    asteroid_transform.GetComponent<Rigidbody2D>().angularVelocity = Random.value * max_roid_spin * 2 - max_roid_spin;
     
     Vector2 new_roid_velocity = new Vector2(Random.value * 4 - 2, Random.value * 4 - 2);
-    asteroid_transform.rigidbody2D.velocity = new_roid_velocity;
+    asteroid_transform.GetComponent<Rigidbody2D>().velocity = new_roid_velocity;
   }
 }

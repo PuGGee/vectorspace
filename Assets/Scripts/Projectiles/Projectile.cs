@@ -3,8 +3,6 @@ using System.Collections;
 
 public abstract class Projectile : MonoBehaviour {
   
-  private float power_value;
-  
   protected Transform friend;
   
   protected Color color;
@@ -16,31 +14,32 @@ public abstract class Projectile : MonoBehaviour {
     }
   }
   
-  public float power {
-    get {
-      return power_value;
-    }
-    set {
-      power_value = value;
-    }
-  }
+  public float power { get; set; }
   
-  public static void make_impact(Collider2D target, Vector2 position, Vector2 normal, float force, float damage) {
+  public float explosion_size { get; set; }
+  public bool explosion_cloud { get; set; }
+  
+  public static Impact make_impact(Collider2D target, Vector2 position, Vector2 normal, float force, float damage) {
     var damage_script = target.GetComponent<DamageScript>();
     var shield_script = target.GetComponent<ShieldScript>();
+    Impact impact = new Impact();
     if (shield_script != null) {
-      DamageHelper.damage(shield_script, damage, position, normal);
-      target.transform.parent.rigidbody2D.AddForceAtPosition(-normal * force * 10, position);
+      impact.target = shield_script;
+      target.transform.parent.GetComponent<Rigidbody2D>().AddForceAtPosition(-normal * force * 10, position);
     } else {
       if (damage_script != null) {
-        DamageHelper.damage(damage_script, damage, position, normal);
+        impact.target = damage_script;
       }
-      target.rigidbody2D.AddForceAtPosition(-normal * force * 10, position);
+      target.GetComponent<Rigidbody2D>().AddForceAtPosition(-normal * force * 10, position);
     }
+    impact.location = position;
+    impact.normal = normal;
+    impact.damage = damage;
+    return impact;
   }
   
   public virtual void set_speed_and_direction(float speed, float angle_rads) {
-    RigidbodyHelper.add_velocity(rigidbody2D, speed, angle_rads);
+    RigidbodyHelper.add_velocity(GetComponent<Rigidbody2D>(), speed, angle_rads);
   }
   
   public virtual void set_color(Color color, Color spark_color) {
@@ -51,9 +50,10 @@ public abstract class Projectile : MonoBehaviour {
   }
   
   protected void impact(Collider2D target, Vector2 position, Vector2 normal) {
-    make_impact(target, position, normal, power / 6, power);
+    var impact = make_impact(target, position, normal, power / 6, power);
+    ImpactFactory.inflict_impact(impact);
     
-    SparkHelper.spark_fountain(position, normal, (int)power, spark_color);
+    SparkHelper.spark_fountain(position, normal, 7, spark_color);
   }
   
   public bool not_friend(Transform target) {

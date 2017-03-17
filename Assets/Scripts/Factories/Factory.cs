@@ -10,7 +10,7 @@ public class Factory {
     Vector3 pos = object_transform.localPosition;
     pos.z = 0;
     if (velocity.HasValue) {
-      object_transform.rigidbody2D.velocity = velocity.Value;
+      object_transform.GetComponent<Rigidbody2D>().velocity = velocity.Value;
     }
     return object_transform;
   }

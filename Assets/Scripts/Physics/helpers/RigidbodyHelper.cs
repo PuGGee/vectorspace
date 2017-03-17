@@ -4,10 +4,10 @@ using System.Collections;
 public class RigidbodyHelper {
 
   public static Rigidbody2D rigidbody_for(Transform transform) {
-    if (transform.rigidbody2D != null) {
-      return transform.rigidbody2D;
+    if (transform.GetComponent<Rigidbody2D>() != null) {
+      return transform.GetComponent<Rigidbody2D>();
     } else {
-      return transform.parent.rigidbody2D;
+      return transform.parent.GetComponent<Rigidbody2D>();
     }
   }
   
