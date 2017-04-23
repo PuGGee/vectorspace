@@ -2,9 +2,9 @@ using UnityEngine;
 using System.Collections;
 
 public class ShipSpawner : MonoBehaviour {
-  
+
   bool station_present;
-  
+
   public ShipControl make_random_ship(Team.Faction team, Vector2 location) {
     var bp = new Blueprint();
     bp.ship_prefab = GlobalPrefabs.find.ship1;
@@ -22,14 +22,14 @@ public class ShipSpawner : MonoBehaviour {
     bp.add_equipment(0, weapon);
     var equipment = new Transform[] {GlobalPrefabs.find.shield_gen1, GlobalPrefabs.find.armour1}[Random.Range(0, 2)];
     bp.add_equipment(2, equipment);
-    
+
     return ShipFactory.make(bp, "AIControl", team, location, 0);
   }
-  
+
   public ShipControl make_random_ship(Team.Faction team) {
-    return make_random_ship(team, GlobalObjects.player.position + new Vector2(Random.value * 20 - 10, Random.value * 20 - 10));
+    return make_random_ship(team, TrigHelper.random_location(GlobalObjects.player.position, 6));
   }
-  
+
   public void spawn_station(Map.Station station) {
     if (station != null) {
       if (!station_present) {
@@ -41,42 +41,42 @@ public class ShipSpawner : MonoBehaviour {
       station_present = false;
     }
   }
-  
+
   public void clear() {
     clear_ships();
     clear_stations();
   }
-  
+
   private void clear_ships() {
     foreach (GameObject ship in all_ships()) {
       Destroy(ship);
     }
   }
-  
+
   private void clear_stations() {
     foreach (GameObject station in all_stations()) {
       Destroy(station);
     }
   }
-  
+
   void FixedUpdate() {
     cull_ships();
     populate_ships();
   }
-  
+
   private GameObject[] all_ships() {
     return GameObject.FindGameObjectsWithTag("ship");
   }
-  
+
   private GameObject[] all_stations() {
     return GameObject.FindGameObjectsWithTag("station");
   }
-  
+
   private void cull_ships() {
-    
+
   }
-  
+
   private void populate_ships() {
-    
+
   }
 }
