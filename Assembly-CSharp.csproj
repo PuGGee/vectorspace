@@ -107,6 +107,7 @@
      <Compile Include="Assets\Scripts\Spawners\AsteroidSpawner.cs" />
      <Compile Include="Assets\Scripts\Spawners\ShipSpawner.cs" />
      <Compile Include="Assets\Scripts\Storage\Blueprint.cs" />
+     <Compile Include="Assets\Scripts\Storage\Colors.cs" />
      <Compile Include="Assets\Scripts\Storage\GlobalObjects.cs" />
      <Compile Include="Assets\Scripts\Storage\GlobalPrefabs.cs" />
      <Compile Include="Assets\Scripts\Storage\Map.cs" />

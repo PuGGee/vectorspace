@@ -3,8 +3,6 @@ using System.Collections;
 
 public class Explosive : Projectile {
 
-  public static Color explosion_color = new Color(1f, 0.9f, 0.21f, 1);
-
   protected void explode(Collider2D collider) {
     Vector2 position = transform.position;
     position -= GetComponent<Rigidbody2D>().velocity * Time.deltaTime;
@@ -22,7 +20,7 @@ public class Explosive : Projectile {
 
     ImpactFactory.inflict_impact(impact);
     Destroy(gameObject);
-    
+
     // Vector2 position = transform.position;
     // position -= rigidbody2D.velocity * Time.deltaTime;
     // transform.position = position;

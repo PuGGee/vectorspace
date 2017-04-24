@@ -7,8 +7,8 @@ public class WeaponScript : Equipment {
   public float power;
   public WeaponType weapon_type;
   public float projectile_speed;
-  public Color color;
-  public Color spark_color;
+  public string _color;
+  public string _spark_color;
   public float explosion_size;
   public bool explosion_cloud;
 
@@ -18,6 +18,17 @@ public class WeaponScript : Equipment {
   private ShipScript ship_script;
 
   public float direction_rads { get; set; }
+
+  public Color color {
+    get {
+      return Colors.get(_color);
+    }
+  }
+  public Color spark_color {
+    get {
+      return Colors.get(_spark_color);
+    }
+  }
 
   public Transform hardpoint {
     get {

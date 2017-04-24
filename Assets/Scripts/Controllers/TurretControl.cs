@@ -5,6 +5,12 @@ public class TurretControl : ScannerControl {
 
   private WeaponScript weapon_script;
 
+  protected override Transform body_transform {
+    get {
+      return transform.parent;
+    }
+  }
+
   public WeaponScript weapon {
     get {
       return weapon_script;
@@ -34,7 +40,7 @@ public class TurretControl : ScannerControl {
 
   public override MovementScript move_script {
     get {
-      return transform.parent.GetComponent<MovementScript>();
+      return body_transform.GetComponent<MovementScript>();
     }
   }
 

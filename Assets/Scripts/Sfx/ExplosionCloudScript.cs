@@ -2,11 +2,11 @@ using UnityEngine;
 using System.Collections;
 
 public class ExplosionCloudScript : SfxScript {
-  
+
   private const float layer_color_interval = 0.66f;
-  
+
   private bool color_set;
-  
+
   private ExplosionLayerScript layer(string identifier) {
     switch(identifier) {
       case "front":
@@ -18,29 +18,29 @@ public class ExplosionCloudScript : SfxScript {
     }
     return null;
   }
-  
+
   private ExplosionLayerScript[] layers {
     get {
       return GetComponentsInChildren<ExplosionLayerScript>();
     }
   }
-  
+
   void Start() {
     if (!color_set) {
-      set_color(new Color(1, 0.75f, 0.25f, 1));
+      set_color(Colors.get("explosion_color"));
     }
   }
-  
+
   void Update() {
     if (layers.Length <= 0) {
       Destroy(gameObject);
     }
   }
-  
+
   public void set_scale(float scale) {
     transform.localScale = new Vector3(scale, scale, 1);
   }
-  
+
   public override void set_color(Color color) {
     layer("front").set_color(color);
     var middle_color = new Color(color.r * layer_color_interval, color.g * layer_color_interval, color.b * layer_color_interval, color.a);
