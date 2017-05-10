@@ -115,15 +115,15 @@ public class MovementScript : MonoBehaviour {
     }
   }
 
-  public void forward() {
+  public void forward(float magnitude = 1) {
     if (!moving_too_fast) {
-      thrust(1);
+      thrust(magnitude);
     }
   }
 
-  public void backward() {
+  public void backward(float magnitude = 1) {
     if (!moving_too_fast) {
-      thrust(-0.5f);
+      thrust(-magnitude / 2);
     }
   }
 }

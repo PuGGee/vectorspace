@@ -87,6 +87,7 @@
      <Compile Include="Assets\Scripts\Physics\DockingScript.cs" />
      <Compile Include="Assets\Scripts\Physics\Impact.cs" />
      <Compile Include="Assets\Scripts\Physics\MovementScript.cs" />
+     <Compile Include="Assets\Scripts\Physics\helpers\LocationHelper.cs" />
      <Compile Include="Assets\Scripts\Physics\helpers\RigidbodyHelper.cs" />
      <Compile Include="Assets\Scripts\Physics\helpers\TrigHelper.cs" />
      <Compile Include="Assets\Scripts\Projectiles\Explosive.cs" />
