@@ -5,8 +5,8 @@ public class StoreTab : Tab {
 
   private Vector2 store_scroll_position;
 
-  public StoreTab(StationMenu s) : base(s) {}
-  
+  public StoreTab(StationMenu s, Rect r) : base(s, r) {}
+
   private StationScript station {
     get {
       return station_menu.current_station;
@@ -23,7 +23,7 @@ public class StoreTab : Tab {
 
   private void render_store_items() {
     foreach (var stock in station.current_stock) {
-      if (GUILayout.Button(stock.name)) {
+      if (UIHelper.button(stock.name, 1)) {
         buy(stock);
       }
     }
@@ -31,7 +31,7 @@ public class StoreTab : Tab {
 
   private void render_items_to_sell() {
     foreach (Transform item in PlayerData.inventory) {
-      if (GUILayout.Button(EquipmentHelper.name(item))) {
+      if (UIHelper.button(EquipmentHelper.name(item), 1)) {
         sell(item);
       }
     }

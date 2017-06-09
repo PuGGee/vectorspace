@@ -2,17 +2,17 @@ using UnityEngine;
 using System.Collections;
 
 public class MissionTab : Tab {
-  
-  public MissionTab(StationMenu s) : base(s) {}
-  
+
+  public MissionTab(StationMenu s, Rect r) : base(s, r) {}
+
   public override void render() {
-    if (GUILayout.Button("Easy Mission")) {
+    if (UIHelper.button("Easy Mission", 1)) {
       GlobalObjects.mission_control.start_new_mission(1);
     }
-    if (GUILayout.Button("Normal Mission")) {
+    if (UIHelper.button("Normal Mission", 1)) {
       GlobalObjects.mission_control.start_new_mission(2);
     }
-    if (GUILayout.Button("Hard Mission")) {
+    if (UIHelper.button("Hard Mission", 1)) {
       GlobalObjects.mission_control.start_new_mission(3);
     }
   }

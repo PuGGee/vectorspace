@@ -7,6 +7,8 @@ public class StationMenu : MonoBehaviour {
 
   private Tab current_tab;
 
+  private Rect screen_rect;
+
   private MissionTab mission_tab;
   private SlotTab slot_tab;
   private StoreTab store_tab;
@@ -15,33 +17,34 @@ public class StationMenu : MonoBehaviour {
   public StationScript current_station { get; set; }
 
   void Start() {
-    mission_tab = new MissionTab(this);
-    slot_tab = new SlotTab(this);
-    store_tab = new StoreTab(this);
-    ships_tab = new ShipsTab(this);
+    screen_rect = new Rect(UIHelper.gridx(1), UIHelper.gridy(1), UIHelper.gridx(10), UIHelper.gridy(10));
+    mission_tab = new MissionTab(this, screen_rect);
+    slot_tab = new SlotTab(this, screen_rect);
+    store_tab = new StoreTab(this, screen_rect);
+    ships_tab = new ShipsTab(this, screen_rect);
     current_tab = mission_tab;
   }
 
   void OnGUI() {
     GUI.skin = skin;
 
-    GUILayout.BeginArea(new Rect(Screen.width * 0.2f, Screen.height * 0.2f, Screen.width * 0.8f, Screen.height * 0.8f));
+    GUILayout.BeginArea(screen_rect);
       GUILayout.BeginHorizontal();
-        if (GUILayout.Button("Missions")) {
+        if (UIHelper.button("Missions", 1)) {
           goto_missions();
         }
-        if (GUILayout.Button("Store")) {
+        if (UIHelper.button("Store", 1)) {
           goto_store();
         }
-        if (GUILayout.Button("Hanger")) {
+        if (UIHelper.button("Hanger", 1)) {
           goto_slots();
         }
-        if (GUILayout.Button("Ships")) {
+        if (UIHelper.button("Ships", 1)) {
           goto_ships();
         }
       GUILayout.EndHorizontal();
       current_tab.render();
-      if (GUILayout.Button("Leave")) {
+      if (UIHelper.button("Leave", 1)) {
         GlobalObjects.game_control.undock();
       }
     GUILayout.EndArea();

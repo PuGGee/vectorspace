@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ShipFactory : Factory {
 
-  public static ShipControl make(Blueprint blueprint, string controller_type, Team.Faction team, Vector2 position, float rotation) {
+  public static ShipControl make(Blueprint blueprint, System.Type controller_type, Team.Faction team, Vector2 position, float rotation) {
     Transform transform = blueprint.make();
 
     add_equipment_to_transform(transform, blueprint);
@@ -13,7 +13,7 @@ public class ShipFactory : Factory {
     var ship_script = transform.GetComponent<ShipScript>();
     ship_script.team = team;
     ship_script.finalize();
-    return UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(transform.gameObject, "Assets/Scripts/Factories/ShipFactory.cs (16,12)", controller_type) as ShipControl;
+    return transform.gameObject.AddComponent(controller_type) as ShipControl;
   }
 
   private static void add_equipment_to_transform(Transform instantiated_transform, Blueprint blueprint) {
@@ -54,6 +54,6 @@ public class ShipFactory : Factory {
   }
 
   public static void make_player(Vector2 position, float rotation) {
-    GlobalObjects.player = make(PlayerData.blueprint, "PlayerControl", Team.player, position, rotation) as PlayerControl;
+    GlobalObjects.player = make(PlayerData.blueprint, typeof(PlayerControl), Team.player, position, rotation) as PlayerControl;
   }
 }

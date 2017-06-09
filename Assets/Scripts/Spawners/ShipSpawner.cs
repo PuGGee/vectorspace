@@ -23,7 +23,7 @@ public class ShipSpawner : MonoBehaviour {
     var equipment = new Transform[] {GlobalPrefabs.find.shield_gen1, GlobalPrefabs.find.armour1}[Random.Range(0, 2)];
     bp.add_equipment(2, equipment);
 
-    return ShipFactory.make(bp, "AIControl", team, location, 0);
+    return ShipFactory.make(bp, typeof(AIControl), team, location, 0);
   }
 
   public ShipControl make_random_ship(Team.Faction team) {

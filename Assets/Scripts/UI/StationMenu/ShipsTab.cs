@@ -3,16 +3,16 @@ using System.Collections;
 
 public class ShipsTab : Tab {
 
-  public ShipsTab(StationMenu s) : base(s) {}
+  public ShipsTab(StationMenu s, Rect r) : base(s, r) {}
 
   public override void render() {
-    if (GUILayout.Button("Ship 1")) {
+    if (UIHelper.button("Ship 1", 1)) {
       buy(GlobalPrefabs.find.ship1);
     }
-    if (GUILayout.Button("Ship 2")) {
+    if (UIHelper.button("Ship 2", 1)) {
       buy(GlobalPrefabs.find.ship2);
     }
-    if (GUILayout.Button("Ship 3")) {
+    if (UIHelper.button("Ship 3", 1)) {
       buy(GlobalPrefabs.find.ship3);
     }
   }

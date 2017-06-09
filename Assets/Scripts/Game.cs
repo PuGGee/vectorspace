@@ -3,6 +3,14 @@ using System.Collections;
 
 public class Game {
 
+  private static bool _paused;
+
+  public static bool paused {
+    get {
+      return _paused;
+    }
+  }
+
   public static void new_game() {
     PlayerData.credits = 100;
     PlayerData.ship = GlobalPrefabs.find.ship3;
@@ -20,9 +28,11 @@ public class Game {
 
   public static void pause() {
     Time.timeScale = 0;
+    _paused = true;
   }
 
   public static void unpause() {
     Time.timeScale = 1;
+    _paused = false;
   }
 }
