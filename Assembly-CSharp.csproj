@@ -108,6 +108,7 @@
      <Compile Include="Assets\Scripts\Sfx\helpers\SparkHelper.cs" />
      <Compile Include="Assets\Scripts\Spawners\AsteroidSpawner.cs" />
      <Compile Include="Assets\Scripts\Spawners\ShipSpawner.cs" />
+     <Compile Include="Assets\Scripts\Spawners\Spawner.cs" />
      <Compile Include="Assets\Scripts\Storage\Blueprint.cs" />
      <Compile Include="Assets\Scripts\Storage\Colors.cs" />
      <Compile Include="Assets\Scripts\Storage\GlobalObjects.cs" />

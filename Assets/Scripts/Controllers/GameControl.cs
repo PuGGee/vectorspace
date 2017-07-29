@@ -5,10 +5,17 @@ public class GameControl : MonoBehaviour {
 
   private StationScript docked_at;
   private Map game_map;
+  private int _scale;
 
   public Map map {
     get {
       return game_map;
+    }
+  }
+
+  public int scale {
+    get {
+      return _scale;
     }
   }
 
@@ -25,6 +32,7 @@ public class GameControl : MonoBehaviour {
   }
 
   void Start() {
+    _scale = 1;
     game_map = Map.draw();
   }
 
@@ -61,9 +69,9 @@ public class GameControl : MonoBehaviour {
     set_scale_for_player();
   }
 
-  public void set_scale(int scale) {
+  public void scale_is(int scale) {
     GlobalObjects.camera_control.set_scale(scale);
-    GlobalObjects.asteroid_spawner.scale = scale;
+    _scale = scale;
   }
 
   public void dock(StationScript station) {
@@ -81,7 +89,7 @@ public class GameControl : MonoBehaviour {
   }
 
   private void set_scale_for_player() {
-    set_scale(GlobalObjects.player.ship_scale);
+    scale_is(GlobalObjects.player.ship_scale);
   }
 
   public void clear_world() {

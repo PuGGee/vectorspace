@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class ShipSpawner : MonoBehaviour {
+public class ShipSpawner : Spawner {
 
   bool station_present;
 
@@ -60,7 +60,7 @@ public class ShipSpawner : MonoBehaviour {
   }
 
   void FixedUpdate() {
-    cull_ships();
+    // cull_ships();
     populate_ships();
   }
 
@@ -73,7 +73,11 @@ public class ShipSpawner : MonoBehaviour {
   }
 
   private void cull_ships() {
-
+    foreach (GameObject ship in all_ships()) {
+      if (within_player_radius(ship.transform.localPosition)) {
+        Destroy(ship);
+      }
+    }
   }
 
   private void populate_ships() {
