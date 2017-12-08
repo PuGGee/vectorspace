@@ -13,7 +13,7 @@ public class GameControl : MonoBehaviour {
     }
   }
 
-  public int scale {
+  public virtual int scale {
     get {
       return _scale;
     }
@@ -31,13 +31,14 @@ public class GameControl : MonoBehaviour {
     }
   }
 
-  void Start() {
+  protected virtual void Start() {
     _scale = 1;
     game_map = Map.draw();
     Game.new_game();
+    start_game();
   }
 
-  void Update() {
+  protected virtual void Update() {
     set_asteroid_density();
     check_station_proximity();
 
@@ -55,14 +56,6 @@ public class GameControl : MonoBehaviour {
     if (Input.GetKeyDown("y")) {
       CargoFactory.make_credits(TrigHelper.random_location(player_position, 5), 50);
     }
-  }
-
-  private void set_asteroid_density() {
-    GlobalObjects.asteroid_spawner.density = map.density_at(player_position);
-  }
-
-  private void check_station_proximity() {
-    GlobalObjects.ship_spawner.spawn_station(map.station_at(player_position));
   }
 
   public void start_game() {
@@ -87,6 +80,14 @@ public class GameControl : MonoBehaviour {
     set_scale_for_player();
     GlobalObjects.ui.close_station_menu();
     Game.unpause();
+  }
+
+  private void set_asteroid_density() {
+    GlobalObjects.asteroid_spawner.density = map.density_at(player_position);
+  }
+
+  private void check_station_proximity() {
+    GlobalObjects.ship_spawner.spawn_station(map.station_at(player_position));
   }
 
   private void set_scale_for_player() {

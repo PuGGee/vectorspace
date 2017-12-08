@@ -16,7 +16,7 @@ public class GlobalObjects : MonoBehaviour {
 
   private static Colors _colors;
 
-  private static PlayerControl player_cache;
+  private static ShipControl player_cache;
 
   private static GameHUD hud_cache;
   private static StationMenu station_menu_cache;
@@ -51,7 +51,7 @@ public class GlobalObjects : MonoBehaviour {
     }
   }
 
-  public static PlayerControl player {
+  public static ShipControl player {
     get {
       return player_cache;
     }

@@ -22,8 +22,6 @@ public class Game {
     // PlayerData.add_equipment(4, GlobalPrefabs.find.heavy_machinegun);
     // PlayerData.add_equipment(5, GlobalPrefabs.find.heavy_machinegun);
     PlayerData.add_equipment(6, GlobalPrefabs.find.lazor_mkiii);
-
-    GlobalObjects.game_control.start_game();
   }
 
   public static void pause() {
