@@ -94,7 +94,7 @@ public class GlobalObjects : MonoBehaviour {
     return GameObject.Find(name).transform;
   }
 
-  void Start() {
+  void Awake() {
     foreground_cache = get_transform("Foreground");
     projectiles_cache = get_transform("Projectiles");
     sfx_cache = get_transform("Sfx");
@@ -109,9 +109,5 @@ public class GlobalObjects : MonoBehaviour {
     ui_control_cache = GameObject.Find("GUIHandler").GetComponent<UIControl>();
 
     _colors = GetComponent<Colors>();
-
-    if (!player_cache) {
-      Game.new_game();
-    }
   }
 }

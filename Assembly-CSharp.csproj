@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\Controllers\AIControl.cs" />
      <Compile Include="Assets\Scripts\Controllers\CameraControl.cs" />
      <Compile Include="Assets\Scripts\Controllers\GameControl.cs" />
+     <Compile Include="Assets\Scripts\Controllers\MenuDramatisationControl.cs" />
      <Compile Include="Assets\Scripts\Controllers\MissileControl.cs" />
      <Compile Include="Assets\Scripts\Controllers\MissionControl.cs" />
      <Compile Include="Assets\Scripts\Controllers\PlayerControl.cs" />
@@ -117,6 +118,7 @@
      <Compile Include="Assets\Scripts\Storage\PlayerData.cs" />
      <Compile Include="Assets\Scripts\Storage\SensorTarget.cs" />
      <Compile Include="Assets\Scripts\Storage\Team.cs" />
+     <Compile Include="Assets\Scripts\Storage\Timer.cs" />
      <Compile Include="Assets\Scripts\Storage\helpers\ListHelper.cs" />
      <Compile Include="Assets\Scripts\UI\GameHUD.cs" />
      <Compile Include="Assets\Scripts\UI\LocationMarkersScript.cs" />

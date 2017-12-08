@@ -3,9 +3,12 @@ using System.Collections;
 
 public class ShipSpawner : Spawner {
 
-  bool station_present;
+  const float ship_spawn_chance = 0.2f;
 
-  public ShipControl make_random_ship(Team.Faction team, Vector2 location) {
+  bool station_present;
+  Timer ship_spawn_interval_timer;
+
+  public AIControl make_random_ship(Team.Faction team, Vector2 location) {
     var bp = new Blueprint();
     bp.ship_prefab = GlobalPrefabs.find.ship1;
     var weapon = new Transform[] {
@@ -23,11 +26,11 @@ public class ShipSpawner : Spawner {
     var equipment = new Transform[] {GlobalPrefabs.find.shield_gen1, GlobalPrefabs.find.armour1}[Random.Range(0, 2)];
     bp.add_equipment(2, equipment);
 
-    return ShipFactory.make(bp, typeof(AIControl), team, location, 0);
+    return ShipFactory.make(bp, typeof(AIControl), team, location, 0) as AIControl;
   }
 
-  public ShipControl make_random_ship(Team.Faction team) {
-    return make_random_ship(team, TrigHelper.random_location(GlobalObjects.player.position, 6));
+  public AIControl make_random_ship(Team.Faction team) {
+    return make_random_ship(team, TrigHelper.random_location(GlobalObjects.player.position, spawn_start_distance));
   }
 
   public void spawn_station(Map.Station station) {
@@ -59,8 +62,12 @@ public class ShipSpawner : Spawner {
     }
   }
 
+  void Start() {
+    ship_spawn_interval_timer = new Timer(4);
+  }
+
   void FixedUpdate() {
-    // cull_ships();
+    cull_ships();
     populate_ships();
   }
 
@@ -81,6 +88,11 @@ public class ShipSpawner : Spawner {
   }
 
   private void populate_ships() {
-
+    if (ship_spawn_interval_timer.interval()) {
+      if (Random.value < ship_spawn_chance) {
+        AIControl controller = make_random_ship(Team.team1);
+        // controller.choose_random_waypoint();
+      }
+    }
   }
 }

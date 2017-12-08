@@ -4,8 +4,6 @@
 
 - Better UI; this is obviously quite a big one. Will need to be split up into smaller tasks.
 
-- Touch controls; so the game can be played on mobile.
-
 - Add content; new ships, new stations, new guns, new mission types.
 
 - Some sort of awesome space backdrop; the plain black background probably won't cut it in the long run. I might give out an initial release of the game to some friends to see if they think a nice background is really necessary.

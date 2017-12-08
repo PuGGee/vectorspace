@@ -34,6 +34,7 @@ public class GameControl : MonoBehaviour {
   void Start() {
     _scale = 1;
     game_map = Map.draw();
+    Game.new_game();
   }
 
   void Update() {
