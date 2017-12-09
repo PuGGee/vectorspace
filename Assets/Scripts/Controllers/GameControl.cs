@@ -5,17 +5,10 @@ public class GameControl : MonoBehaviour {
 
   private StationScript docked_at;
   private Map game_map;
-  private int _scale;
 
   public Map map {
     get {
       return game_map;
-    }
-  }
-
-  public virtual int scale {
-    get {
-      return _scale;
     }
   }
 
@@ -32,7 +25,7 @@ public class GameControl : MonoBehaviour {
   }
 
   protected virtual void Start() {
-    _scale = 1;
+    Scale.set(1);
     game_map = Map.draw();
     Game.new_game();
     start_game();
@@ -63,11 +56,6 @@ public class GameControl : MonoBehaviour {
     set_scale_for_player();
   }
 
-  public void scale_is(int scale) {
-    GlobalObjects.camera_control.set_scale(scale);
-    _scale = scale;
-  }
-
   public void dock(StationScript station) {
     docked_at = station;
     GlobalObjects.ui.open_station_menu(station);
@@ -91,7 +79,7 @@ public class GameControl : MonoBehaviour {
   }
 
   private void set_scale_for_player() {
-    scale_is(GlobalObjects.player.ship_scale);
+    Scale.set(GlobalObjects.player.ship_scale);
   }
 
   public void clear_world() {

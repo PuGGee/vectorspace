@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour {
 
   protected float scale_factor {
     get {
-      return 0.5f + GlobalObjects.game_control.scale * 0.5f;
+      return 0.5f + Scale.value * 0.5f;
     }
   }
 

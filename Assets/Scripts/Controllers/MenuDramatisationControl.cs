@@ -9,13 +9,8 @@ public class MenuDramatisationControl : GameControl {
 
   private int previous_spawn_time;
 
-  public override int scale {
-    get {
-      return SCALE;
-    }
-  }
-
   protected override void Start() {
+    Scale.set(SCALE);
     GlobalObjects.asteroid_spawner.density = ASTEROID_DENSITY;
     previous_spawn_time = 0;
     GlobalObjects.player = GameObject.Find("FakePlayer").GetComponent<ShipControl>();

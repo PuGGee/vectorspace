@@ -17,9 +17,10 @@ public class CameraControl : MonoBehaviour {
     var direction_vector = GlobalObjects.player.transform.rotation * Vector2.up * distance;
     transform.position = GlobalObjects.player.transform.position + displacement + direction_vector;
     transform.rotation = GlobalObjects.player.transform.rotation;
+    set_scale(Scale.value);
   }
 
-  public void set_scale(int scale) {
+  private void set_scale(int scale) {
     camera.orthographicSize = scale * 5 + 5;
     distance = 4 + 3 * scale;
   }
