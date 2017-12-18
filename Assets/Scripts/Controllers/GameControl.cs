@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameControl : MonoBehaviour {
 
   private StationScript docked_at;
   private Map game_map;
+  private bool game_over_shown;
 
   public Map map {
     get {
@@ -32,22 +34,29 @@ public class GameControl : MonoBehaviour {
   }
 
   protected virtual void Update() {
-    set_asteroid_density();
-    check_station_proximity();
+    if (GlobalObjects.player != null) {
+      set_asteroid_density();
+      check_station_proximity();
 
-    if (Input.GetKeyDown("m")) {
-      GlobalObjects.ui.toggle_map();
-    }
+      if (Input.GetKeyDown("m")) {
+        GlobalObjects.ui.toggle_map();
+      }
 
-    // Cheaty cheats
-    if (Input.GetKeyDown("r")) {
-      GlobalObjects.ship_spawner.make_random_ship(Team.pirates);
-    }
-    if (Input.GetKeyDown("t")) {
-      GlobalObjects.ship_spawner.make_random_ship(Team.team1);
-    }
-    if (Input.GetKeyDown("y")) {
-      CargoFactory.make_credits(TrigHelper.random_location(player_position, 5), 50);
+      // Cheaty cheats
+      if (Input.GetKeyDown("r")) {
+        GlobalObjects.ship_spawner.make_random_ship(Team.pirates);
+      }
+      if (Input.GetKeyDown("t")) {
+        GlobalObjects.ship_spawner.make_random_ship(Team.team1);
+      }
+      if (Input.GetKeyDown("y")) {
+        CargoFactory.make_credits(TrigHelper.random_location(player_position, 5), 50);
+      }
+    } else {
+      if (!game_over_shown) {
+        game_over_shown = true;
+        GlobalObjects.ui.show_game_over();
+      }
     }
   }
 
@@ -85,5 +94,9 @@ public class GameControl : MonoBehaviour {
   public void clear_world() {
     GlobalObjects.asteroid_spawner.clear();
     GlobalObjects.ship_spawner.clear();
+  }
+
+  public void main_menu() {
+    SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
   }
 }
