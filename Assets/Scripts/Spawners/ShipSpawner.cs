@@ -91,7 +91,7 @@ public class ShipSpawner : Spawner {
     if (ship_spawn_interval_timer.interval()) {
       if (Random.value < ship_spawn_chance) {
         AIControl controller = make_random_ship(Team.team1);
-        // controller.choose_random_waypoint();
+        controller.choose_random_waypoint();
       }
     }
   }

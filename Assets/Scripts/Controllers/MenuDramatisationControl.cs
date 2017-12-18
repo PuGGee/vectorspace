@@ -5,7 +5,7 @@ public class MenuDramatisationControl : GameControl {
 
   const int SCALE = 1;
   const int ASTEROID_DENSITY = 50;
-  const int SPAWN_INTERVAL = 120;
+  const int SPAWN_INTERVAL = 60;
 
   private int previous_spawn_time;
 
@@ -19,11 +19,8 @@ public class MenuDramatisationControl : GameControl {
   protected override void Update() {
     if (previous_spawn_time < Time.frameCount - SPAWN_INTERVAL) {
       previous_spawn_time = Time.frameCount;
-      if (Random.value < 0.5) {
-        GlobalObjects.ship_spawner.make_random_ship(Team.pirates);
-      } else {
-        GlobalObjects.ship_spawner.make_random_ship(Team.team1);
-      }
+      GlobalObjects.ship_spawner.make_random_ship(Team.pirates);
+      GlobalObjects.ship_spawner.make_random_ship(Team.team1);
     }
   }
 }
