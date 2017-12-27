@@ -9,6 +9,7 @@ public class WeaponScript : Equipment {
   public float projectile_speed;
   public string _color;
   public string _spark_color;
+  public AudioClip sound_clip;
   public float explosion_size;
   public bool explosion_cloud;
 
@@ -106,6 +107,7 @@ public class WeaponScript : Equipment {
   }
 
   private void shoot() {
+    if (sound_clip) SoundFactory.make_sound(world_position, sound_clip, 0.02f, 1f);
     switch (weapon_type) {
       case WeaponType.tracer:
         ProjectileFactory.make_tracer(this);

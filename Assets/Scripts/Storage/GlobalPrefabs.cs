@@ -59,6 +59,8 @@ public class GlobalPrefabs : MonoBehaviour {
 
   public Transform explosion_mesh;
 
+  public Transform sound_prefab;
+
   private static GlobalPrefabs instance;
 
   public static GlobalPrefabs find {

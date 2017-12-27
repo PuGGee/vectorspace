@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\Factories\ProjectileFactory.cs" />
      <Compile Include="Assets\Scripts\Factories\SfxFactory.cs" />
      <Compile Include="Assets\Scripts\Factories\ShipFactory.cs" />
+     <Compile Include="Assets\Scripts\Factories\SoundFactory.cs" />
      <Compile Include="Assets\Scripts\Factories\StationFactory.cs" />
      <Compile Include="Assets\Scripts\Game.cs" />
      <Compile Include="Assets\Scripts\Hardware\CargoScript.cs" />
@@ -104,6 +105,7 @@
      <Compile Include="Assets\Scripts\Sfx\LineScript.cs" />
      <Compile Include="Assets\Scripts\Sfx\MeshScript.cs" />
      <Compile Include="Assets\Scripts\Sfx\SfxScript.cs" />
+     <Compile Include="Assets\Scripts\Sfx\SoundDestroyer.cs" />
      <Compile Include="Assets\Scripts\Sfx\SparkScript.cs" />
      <Compile Include="Assets\Scripts\Sfx\Triangulator.cs" />
      <Compile Include="Assets\Scripts\Sfx\helpers\SparkHelper.cs" />
