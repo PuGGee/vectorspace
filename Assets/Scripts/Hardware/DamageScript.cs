@@ -56,6 +56,9 @@ public class DamageScript : Damageable {
   public void explode() {
     Destroy(gameObject);
     ExplosionFactory.make(explosion_size, transform.position, GetComponent<Rigidbody2D>().velocity, 30, new Color(1, 0, 0, 1));
+    if (Random.value < 0.5) {
+      CargoFactory.make_credits(transform.position, (int)(Random.value * 50) + 50);
+    }
   }
 
   public override void damage(float magnitude) {
