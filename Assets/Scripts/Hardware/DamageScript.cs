@@ -54,6 +54,10 @@ public class DamageScript : Damageable {
   }
 
   public void explode() {
+    SoundFactory.make_sound(transform.position, GlobalSounds.find.ship_explosion,
+                            0.4f,
+                            Random.Range(0.4f, 2f));
+
     Destroy(gameObject);
     ExplosionFactory.make(explosion_size, transform.position, GetComponent<Rigidbody2D>().velocity, 30, new Color(1, 0, 0, 1));
     if (Random.value < 0.5) {
