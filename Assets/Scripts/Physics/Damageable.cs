@@ -15,8 +15,7 @@ public abstract class Damageable : MonoBehaviour {
     float severity =  Mathf.Abs(Vector2.Dot(collision.relativeVelocity, collision.contacts[0].normal)) * relative_mass * damage_multiplier;
 
     SoundFactory.make_sound(transform.position, GlobalSounds.find.crunch_sound,
-                            severity / 500,
-                            Random.Range(0.8f, 1.2f));
+                            severity / 500);
 
     damage(severity);
   }

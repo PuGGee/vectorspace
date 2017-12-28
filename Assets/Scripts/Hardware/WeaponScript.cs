@@ -9,7 +9,8 @@ public class WeaponScript : Equipment {
   public float projectile_speed;
   public string _color;
   public string _spark_color;
-  public AudioClip sound_clip;
+  public AudioClip shooting_sound;
+  public AudioClip impact_sound;
   public float explosion_size;
   public bool explosion_cloud;
 
@@ -53,6 +54,12 @@ public class WeaponScript : Equipment {
   }
 
   public bool is_turret { get; set; }
+
+  public Vector2 velocity {
+    get {
+      return transform.parent.GetComponent<Rigidbody2D>().velocity;
+    }
+  }
 
   public ShipScript ship {
     get {
@@ -107,7 +114,10 @@ public class WeaponScript : Equipment {
   }
 
   private void shoot() {
-    if (sound_clip) SoundFactory.make_sound(world_position, sound_clip, 0.02f, 1f);
+    if (shooting_sound) SoundFactory.make_sound(world_position, shooting_sound,
+                                            0.02f,
+                                            velocity,
+                                            false);
 
     switch (weapon_type) {
       case WeaponType.tracer:

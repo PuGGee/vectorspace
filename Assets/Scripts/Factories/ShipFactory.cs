@@ -55,5 +55,6 @@ public class ShipFactory : Factory {
 
   public static void make_player(Vector2 position, float rotation) {
     GlobalObjects.player = make(PlayerData.blueprint, typeof(PlayerControl), Team.player, position, rotation) as PlayerControl;
+    GlobalObjects.player.transform.gameObject.AddComponent(typeof(AudioListener));
   }
 }

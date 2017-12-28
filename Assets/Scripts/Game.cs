@@ -16,6 +16,7 @@ public class Game {
     PlayerData.ship = GlobalPrefabs.find.ship1;
     PlayerData.add_equipment(0, GlobalPrefabs.find.light_machinegun);
     PlayerData.add_equipment(1, GlobalPrefabs.find.light_machinegun);
+    PlayerData.add_equipment(2, GlobalPrefabs.find.shield_gen2);
     // PlayerData.add_equipment(5, GlobalPrefabs.find.heavy_plasma_mkiii);
     // PlayerData.add_equipment(2, GlobalPrefabs.find.heavy_machinegun);
     // PlayerData.add_equipment(3, GlobalPrefabs.find.heavy_machinegun);
