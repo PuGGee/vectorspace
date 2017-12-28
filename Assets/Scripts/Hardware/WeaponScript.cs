@@ -108,6 +108,7 @@ public class WeaponScript : Equipment {
 
   private void shoot() {
     if (sound_clip) SoundFactory.make_sound(world_position, sound_clip, 0.02f, 1f);
+
     switch (weapon_type) {
       case WeaponType.tracer:
         ProjectileFactory.make_tracer(this);

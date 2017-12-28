@@ -116,6 +116,7 @@
      <Compile Include="Assets\Scripts\Storage\Colors.cs" />
      <Compile Include="Assets\Scripts\Storage\GlobalObjects.cs" />
      <Compile Include="Assets\Scripts\Storage\GlobalPrefabs.cs" />
+     <Compile Include="Assets\Scripts\Storage\GlobalSounds.cs" />
      <Compile Include="Assets\Scripts\Storage\Map.cs" />
      <Compile Include="Assets\Scripts\Storage\PlayerData.cs" />
      <Compile Include="Assets\Scripts\Storage\Scale.cs" />
