@@ -22,14 +22,10 @@ public class PlayerMotionCalculator {
 
     float divisor;
     if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y)) {
-      divisor = Mathf.Abs(direction.x);
+      return new Vector2(direction.x, direction.y / Mathf.Abs(direction.x));
     } else {
-      divisor = Mathf.Abs(direction.y);
+      return new Vector2(0, direction.y / Mathf.Abs(direction.y));
     }
-
-    var xmagnitude = direction.x / divisor;
-    var ymagnitude = direction.y / divisor;
-    return new Vector2(xmagnitude, ymagnitude);
   }
 
   private void apply_calculated_motion(float x_motion, float y_motion) {

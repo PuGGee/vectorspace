@@ -4,6 +4,7 @@ using System.Collections;
 public class SoundFactory : Factory {
 
   public static void make_sound(Vector2 position, AudioClip sound_clip, float volume, Vector2 velocity = default(Vector2), bool adjust_pitch = true) {
+    return;
     var transform = make_object(GlobalPrefabs.find.sound_prefab, GlobalObjects.sfx_layer, position);
 
     transform.GetComponent<Rigidbody2D>().velocity = velocity;

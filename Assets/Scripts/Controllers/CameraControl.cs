@@ -21,7 +21,7 @@ public class CameraControl : MonoBehaviour {
   }
 
   private void set_scale(int scale) {
-    camera.orthographicSize = scale * 5 + 5;
+    camera.orthographicSize = scale * 10 + 5;
     distance = 4 + 3 * scale;
   }
 }

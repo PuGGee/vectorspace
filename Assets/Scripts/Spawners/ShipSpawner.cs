@@ -19,8 +19,8 @@ public class ShipSpawner : Spawner {
       GlobalPrefabs.find.machinegun,
       GlobalPrefabs.find.heavy_machinegun,
       GlobalPrefabs.find.plasma_mki,
-      GlobalPrefabs.find.plasma_mkii,
-      GlobalPrefabs.find.plasma_mkiii
+      GlobalPrefabs.find.plasma_mkii
+      // GlobalPrefabs.find.plasma_mkiii
     }[Random.Range(0, 8)];
     bp.add_equipment(0, weapon);
     var equipment = new Transform[] {GlobalPrefabs.find.shield_gen1, GlobalPrefabs.find.armour1}[Random.Range(0, 2)];
