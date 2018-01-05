@@ -8,7 +8,7 @@ public class ShipSpawner : Spawner {
   bool station_present;
   Timer ship_spawn_interval_timer;
 
-  public AIControl make_random_ship(Team.Faction team, Vector2 location) {
+  public AIControl make_random_ship(Team.Faction team, Vector2 location, bool cull = true) {
     var bp = new Blueprint();
     bp.ship_prefab = GlobalPrefabs.find.ship1;
     var weapon = new Transform[] {
@@ -26,7 +26,7 @@ public class ShipSpawner : Spawner {
     var equipment = new Transform[] {GlobalPrefabs.find.shield_gen1, GlobalPrefabs.find.armour1}[Random.Range(0, 2)];
     bp.add_equipment(2, equipment);
 
-    return ShipFactory.make(bp, typeof(AIControl), team, location, 0) as AIControl;
+    return ShipFactory.make(bp, typeof(AIControl), team, location, 0, cull: cull) as AIControl;
   }
 
   public AIControl make_random_ship(Team.Faction team) {
@@ -81,7 +81,7 @@ public class ShipSpawner : Spawner {
 
   private void cull_ships() {
     foreach (GameObject ship in all_ships()) {
-      if (within_player_radius(ship.transform.localPosition)) {
+      if (within_player_radius(ship.transform.localPosition) && ship.GetComponent<ShipScript>().cullable) {
         Destroy(ship);
       }
     }

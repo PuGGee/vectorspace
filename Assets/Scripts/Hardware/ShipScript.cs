@@ -6,17 +6,10 @@ public class ShipScript : MovementScript {
   public ShipScale scale;
   public int cost;
 
-  private Team.Faction team_data;
   private WeaponSystem weapon_system;
 
-  public Team.Faction team {
-    get {
-      return team_data;
-    }
-    set {
-      team_data = value;
-    }
-  }
+  public Team.Faction team { get; set; }
+  public bool cullable { get; set; }
 
   public float structure_fraction {
     get {

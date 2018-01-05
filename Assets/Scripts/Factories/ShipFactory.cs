@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ShipFactory : Factory {
 
-  public static ShipControl make(Blueprint blueprint, System.Type controller_type, Team.Faction team, Vector2 position, float rotation) {
+  public static ShipControl make(Blueprint blueprint, System.Type controller_type, Team.Faction team, Vector2 position, float rotation, bool cull = true) {
     Transform transform = blueprint.make();
 
     add_equipment_to_transform(transform, blueprint);
@@ -12,6 +12,7 @@ public class ShipFactory : Factory {
     transform.eulerAngles = new Vector3(0, 0, rotation);
     var ship_script = transform.GetComponent<ShipScript>();
     ship_script.team = team;
+    ship_script.cullable = cull;
     ship_script.finalize();
     return transform.gameObject.AddComponent(controller_type) as ShipControl;
   }
