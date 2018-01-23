@@ -3,6 +3,8 @@ using System.Collections;
 
 public class UIControl : MonoBehaviour {
 
+  public Transform station_menu_group;
+
   private GameHUD hud {
     get {
       return GetComponent<GameHUD>();
@@ -23,13 +25,17 @@ public class UIControl : MonoBehaviour {
 
   public void open_station_menu(StationScript station) {
     hud.enabled = false;
-    station_menu.enabled = true;
-    station_menu.current_station = station;
+    UIHelper.show_group(station_menu_group);
+
+    // station_menu.enabled = true;
+    // station_menu.current_station = station;
   }
 
   public void close_station_menu() {
     hud.enabled = true;
-    station_menu.enabled = false;
+    UIHelper.hide_group(station_menu_group);
+
+    // station_menu.enabled = false;
   }
 
   public void open_map() {
@@ -45,9 +51,6 @@ public class UIControl : MonoBehaviour {
   }
 
   public void show_game_over() {
-    var canvas_group = GameObject.Find("GameOverGroup").GetComponent<CanvasGroup>();
-    canvas_group.alpha = 1;
-    canvas_group.blocksRaycasts = true;
-    canvas_group.interactable = true;
+    UIHelper.show_group(GameObject.Find("GameOverGroup").transform);
   }
 }

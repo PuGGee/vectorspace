@@ -43,4 +43,18 @@ public class UIHelper {
   public static bool button(string label, int height) {
     return GUILayout.Button(label, GUILayout.Height(gridy(height)));
   }
+
+  public static void show_group(Transform canvas_group_transform) {
+    var canvas_group = canvas_group_transform.GetComponent<CanvasGroup>();
+    canvas_group.alpha = 1;
+    canvas_group.blocksRaycasts = true;
+    canvas_group.interactable = true;
+  }
+
+  public static void hide_group(Transform canvas_group_transform) {
+    var canvas_group = canvas_group_transform.GetComponent<CanvasGroup>();
+    canvas_group.alpha = 0;
+    canvas_group.blocksRaycasts = false;
+    canvas_group.interactable = false;
+  }
 }
