@@ -7,7 +7,7 @@ public class ExplosionFactory : Factory {
 
   public static void make(float scale, Vector2 position, Vector2 velocity, float damage, Color color) {
     make_cloud(scale, position, velocity, damage, color);
-    SfxFactory.make_explosion(position, 0.3f * scale, velocity, Colors.get("explosion_color"));
+    SfxFactory.make_explosion(position, 0.3f * scale, velocity);
   }
 
   public static void make_cloud(float scale, Vector2 position, Vector2 velocity, float damage, Color color) {
