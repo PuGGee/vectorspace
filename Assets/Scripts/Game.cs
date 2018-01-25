@@ -14,8 +14,8 @@ public class Game {
   public static void new_game() {
     PlayerData.credits = 100;
     PlayerData.ship = GlobalPrefabs.find.ship1;
-    PlayerData.add_equipment(0, GlobalPrefabs.find.machinegun);
-    PlayerData.add_equipment(1, GlobalPrefabs.find.machinegun);
+    PlayerData.add_equipment(0, GlobalPrefabs.find.light_missile);
+    // PlayerData.add_equipment(1, GlobalPrefabs.find.machinegun);
     PlayerData.add_equipment(2, GlobalPrefabs.find.shield_gen2);
     // PlayerData.add_equipment(5, GlobalPrefabs.find.heavy_plasma_mkiii);
     // PlayerData.add_equipment(2, GlobalPrefabs.find.heavy_machinegun);
