@@ -7,7 +7,8 @@ public class PlayerControl : ShipControl {
   private bool dragging;
 
 	void Update () {
-	  if (Game.paused) { return; }
+  	GetComponent<DamageScript>().reset();
+    if (Game.paused) { return; }
     if (Input.GetKey("w")) {
       ship_script.forward();
     }

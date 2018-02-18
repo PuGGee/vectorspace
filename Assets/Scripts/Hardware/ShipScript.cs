@@ -29,6 +29,12 @@ public class ShipScript : MovementScript {
     }
   }
 
+  public HardpointScript[] hardpoints {
+    get {
+      return GetComponentsInChildren<HardpointScript>();
+    }
+  }
+
   public void finalize() {
     weapon_system = new WeaponSystem(weapons);
   }
