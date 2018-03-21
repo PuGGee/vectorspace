@@ -16,7 +16,8 @@ public class Map {
     map.add_asteroid_field(new Vector2(-300, 300), 200, 80);
     map.add_asteroid_field(new Vector2(-300, -300), 200, 80);
     map.add_asteroid_field(new Vector2(300, -300), 200, 80);
-    map.add_station(new Vector2(20, 0), GlobalPrefabs.find.station1);
+    map.add_asteroid_field(new Vector2(0, 0), 200, 80);
+    // map.add_station(new Vector2(20, 0), GlobalPrefabs.find.station1);
     return map;
   }
 

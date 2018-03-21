@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ShipSpawner : Spawner {
 
-  const float ship_spawn_chance = 0.2f;
+  const float ship_spawn_chance = 1f;
 
   bool station_present;
   Timer ship_spawn_interval_timer;
@@ -119,6 +119,9 @@ public class ShipSpawner : Spawner {
     if (ship_spawn_interval_timer.interval()) {
       if (Random.value < ship_spawn_chance) {
         AIControl controller = make_random_ship(Team.team1);
+        controller.choose_random_waypoint();
+
+        controller = make_random_ship(Team.pirates);
         controller.choose_random_waypoint();
       }
     }
